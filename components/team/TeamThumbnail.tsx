@@ -21,6 +21,7 @@ export default function TeamThumbnail({
     >
       <Image
         src={member.photo}
+        style={{ objectPosition: member.photoPosition }}
         alt=""
         width={180}
         height={212}
