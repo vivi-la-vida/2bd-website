@@ -62,7 +62,7 @@ export default function Navbar() {
         aria-label="2BD Studios home"
         onClick={() => setMenu(false)}
       >
-        <StudioLogo />
+        <StudioLogo sizes="(max-width: 640px) 84px, 96px" />
       </Link>
       <button
         ref={toggle}
@@ -98,7 +98,7 @@ export default function Navbar() {
         href={site.steam}
         target="_blank"
         rel="noreferrer"
-        aria-label="Wishlist on Steam (prototype search link, opens in a new tab)"
+        aria-label="Wishlist on Steam (opens in a new tab)"
       >
         <SteamIcon />
         Wishlist on Steam
