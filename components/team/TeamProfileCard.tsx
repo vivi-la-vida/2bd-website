@@ -1,11 +1,8 @@
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import type { TeamMember } from "@/types/team";
-import { teamIsSample } from "@/data/team";
 
 export default function TeamProfileCard({ member }: { member: TeamMember }) {
-  const qualifier = teamIsSample
-    ? " (sample link, opens in a new tab)"
-    : " (opens in a new tab)";
+  const qualifier = " (opens in a new tab)";
   return (
     <div className="gallery-bio">
       <h3>{member.name}</h3>
@@ -30,16 +27,18 @@ export default function TeamProfileCard({ member }: { member: TeamMember }) {
           LinkedIn
           <ArrowUpRight size={12} />
         </a>
-        <a
-          href={member.portfolio}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={`${member.name}'s portfolio${qualifier}`}
-        >
-          <ExternalLink size={16} />
-          Portfolio
-          <ArrowUpRight size={12} />
-        </a>
+        {member.portfolio && (
+          <a
+            href={member.portfolio}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`${member.name}'s portfolio${qualifier}`}
+          >
+            <ExternalLink size={16} />
+            Portfolio
+            <ArrowUpRight size={12} />
+          </a>
+        )}
       </div>
     </div>
   );

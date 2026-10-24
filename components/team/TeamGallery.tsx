@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { members, teamIsSample } from "@/data/team";
+import { members, teamBiosAreDraft } from "@/data/team";
 import TeamProfileCard from "./TeamProfileCard";
 import TeamThumbnail from "./TeamThumbnail";
 
@@ -80,7 +80,8 @@ export default function TeamGallery() {
               >
                 <Image
                   src={member.photo}
-                  alt={`${teamIsSample ? "Sample portrait of" : "Portrait of"} ${member.name}`}
+                  style={{ objectPosition: member.photoPosition }}
+                  alt={`Portrait of ${member.name}`}
                   width={720}
                   height={850}
                   sizes="(max-width: 640px) 280px, (max-width: 1000px) 35vw, 410px"
@@ -154,9 +155,9 @@ export default function TeamGallery() {
               />
             ))}
           </div>
-          {teamIsSample && (
+          {teamBiosAreDraft && (
             <p className="gallery-placeholder-note">
-              Sample profiles, portraits & links · Our real team is coming soon.
+              Biographies are draft copy · More about our team soon.
             </p>
           )}
         </div>
