@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   experimental: {
     agentFeedback: true,
+    // Avoid child-process socket failures on Windows when evaluating CSS loaders.
+    turbopackPluginRuntimeStrategy: "workerThreads",
   },
   cacheComponents: true,
   partialPrefetching: true,
