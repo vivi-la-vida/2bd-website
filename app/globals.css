@@ -65,6 +65,16 @@
   inset: 0;
   z-index: -2;
 }
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #10244c99, #172e5b38 65%, #172e5b24),
+    linear-gradient(180deg, #14285140, transparent 45%, #12274e80);
+}
 
 header {
   width: 100%;
@@ -331,7 +341,7 @@ nav a.active::after {
 }
 .trailer-coming-soon {
   font-family: var(--font-cormorant), serif;
-  font-size: clamp(32px, 3.5vw, 48px);
+  font-size: clamp(43.2px, 4.725vw, 64.8px);
   font-weight: 400;
   line-height: 1.15;
   color: #fff9ee;
@@ -641,8 +651,10 @@ footer > a:last-child {
 }
 @media (max-width: 640px) {
   .hero {
-    min-height: 760px;
-    max-height: 950px;
+    min-height: 1080px;
+    height: auto;
+    max-height: none;
+    padding: 170px 9% 220px;
   }
 
   header {
@@ -972,5 +984,12 @@ footer > a:last-child {
   .studio-logo {
     width: 56px;
     height: 56px;
+  }
+  .site-header {
+    padding-block: 12px;
+  }
+  .site-header .studio-logo {
+    width: 84px;
+    height: 84px;
   }
 }

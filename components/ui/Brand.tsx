@@ -1,13 +1,13 @@
 import Image from "next/image";
 import studioLogo from "@/public/logos/2bd-studios.png";
 
-export function StudioLogo() {
+export function StudioLogo({ sizes = "48px" }: { sizes?: string }) {
   return (
     <Image
       src={studioLogo}
       alt="2BD Studios"
       className="studio-logo"
-      sizes="(max-width: 640px) 56px, 64px"
+      sizes={sizes}
     />
   );
 }
