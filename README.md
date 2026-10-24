@@ -43,9 +43,6 @@ Static sections remain Server Components. Browser behavior is confined to naviga
 
 - **Team:** Edit `data/team.ts`. The roster follows the supplied CSV order and contains the approved names, roles, LinkedIn links, and matching headshots in `public/images/team/`. `portfolio` is optional: Skylar’s CSV entry has none, so that button is hidden. Put replacement portraits in the same folder and update `photo`; use `photoPosition` to keep the face framed consistently in the featured card and thumbnails. Existing biography wording remains temporary, with names and neutral pronouns updated; replace it with approved bios and set `teamBiosAreDraft` to `false` when ready. The count and thumbnails follow the data automatically.
 - **Game:** Edit `data/game.ts` for the four feature cards. Section-specific copy is in the matching file under `components/sections/`.
-- **Studio links:** Edit `email`, `steam`, and `socials` in `data/site.ts`. The current approved destinations are the To Be Seen Steam page, 2BD Studios Instagram and LinkedIn, and `twobdstudios@gmail.com`. Discord and YouTube are omitted. `linksAreSamples` is `false`, so the old prototype contact notice is hidden.
-- **Illustrations:** Replace images in `public/images/`, preserving filenames or updating imports. Keep meaningful alternative text for content images. Official transparent brand marks are in `public/logos/`.
-- **Typography and icons:** Primary interface text uses the reduced readability scale: a minimum of 18px, a 21.6px base, and regular-weight labels/buttons. Secondary hero credits, biography notices, and footer copyright use a subdued 12px caption size. The navigation studio logo is 96px on desktop and 84px on mobile. `app/favicon.ico` includes 16–256px studio-logo sizes, and `app/icon.png` supplies a transparent 512px browser icon. Both are generated from the official studio logo.
 - **Styling:** Shared colors and font variables are in the Tailwind `@theme` block in `app/globals.css`. Gallery styling is in `components/team/team-gallery.css`. Original visual rules were retained; obsolete prototype carousel rules were removed.
 
 ## Interactions and accessibility
@@ -53,10 +50,6 @@ Static sections remain Server Components. Browser behavior is confined to naviga
 The gallery supports thumbnails, wrapping previous/next arrows, left/right keys, Home/End keys, and horizontal touch swipes. It announces selection changes. The trailer frame displays “Coming Soon” without a play button. To add the official trailer later, pass `videoSrc` and optionally `poster` to `TrailerPreview`; it renders a native video player in the same frame. Animations and smooth scrolling respect reduced motion. A skip link and semantic section headings support keyboard and screen-reader navigation.
 
 ## Content still awaiting studio approval
-
-The nine team names, roles, professional links, and headshots now come from the supplied team CSV and headshot folder. Biography paragraphs remain explicitly labeled draft copy at the owner’s request; they are not verified personal biographies. The studio email, Steam page, Instagram, and LinkedIn use the supplied official destinations. No real trailer video was supplied, so the existing trailer frame displays “Coming Soon.” The contact form validates input and demonstrates the original interaction, but it does not send or store messages; its status says so before and after submission. Connecting delivery requires an approved email destination and service, server-side validation, and abuse protection. Do not present the form as delivering mail until that integration exists.
-
-The GIF supplied with the request is a visual reference of the site, not a background asset: using it as the hero would duplicate embedded UI and text. The site uses the supplied official `public/images/to-be-seen-hero.png` artwork with gentle parallax. A blue CSS tint overlay improves hero text contrast; the original image file remains unchanged. The official game and studio logos are copied unchanged into `public/logos/to-be-seen.png` and `public/logos/2bd-studios.png`; both retain their transparency.
 
 ## Visual review
 
