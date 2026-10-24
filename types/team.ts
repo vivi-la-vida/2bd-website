@@ -3,7 +3,8 @@ export interface TeamMember {
   name: string;
   role: string;
   photo: string;
+  photoPosition?: string;
   bio: string;
   linkedin: string;
-  portfolio: string;
+  portfolio?: string;
 }

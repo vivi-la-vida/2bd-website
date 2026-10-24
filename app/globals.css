@@ -64,21 +64,7 @@
   inset: 0;
   z-index: -2;
 }
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(90deg, #132e665e, transparent 65%),
-    linear-gradient(
-      180deg,
-      #172b665e,
-      transparent 25%,
-      transparent 65%,
-      #1e3466e6
-    );
-}
+
 header {
   width: 100%;
   padding: 31px 5.2%;
@@ -90,36 +76,12 @@ header {
   z-index: 5;
 }
 .studio-logo {
-  display: inline-flex;
-  position: relative;
-  flex-direction: column;
-  align-items: center;
-  border: 1.5px solid currentColor;
-  border-radius: 52% 45% 48% 40%;
-  transform: rotate(-12deg);
-  padding: 5px 11px 7px;
-  line-height: 1;
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
 }
-.studio-logo strong {
-  font-size: 29px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-.studio-logo > span {
-  font-size: 9px;
-  letter-spacing: 2px;
-  margin-top: 3px;
-}
-.studio-logo i {
-  position: absolute;
-  width: 14px;
-  height: 22px;
-  border: 1.5px solid;
-  border-left: 0;
-  border-radius: 0 50% 50% 0;
-  right: -12px;
-  top: 13px;
-}
+
 nav {
   display: flex;
   gap: 35px;
@@ -210,29 +172,7 @@ nav a.active::after {
   width: 285px;
   margin: 30px 0 20px;
 }
-.game-title h1 {
-  font-family: var(--font-kalam), cursive;
-  font-weight: 300;
-  font-size: 99px;
-  line-height: 0.94;
-  letter-spacing: -6px;
-  transform: rotate(-5deg);
-}
-.game-title h1 span {
-  display: block;
-  margin: 4px 0 0 58px;
-}
-.jellyfish {
-  position: absolute;
-  width: 115px;
-  height: 145px;
-  top: -28px;
-  right: -7px;
-  stroke: #fff8ec;
-  stroke-width: 1.3px;
-  filter: drop-shadow(0 0 8px #e7d9ff);
-  transform: rotate(14deg);
-}
+
 .hero-description {
   font-size: 13px;
   line-height: 1.9;
@@ -377,50 +317,24 @@ nav a.active::after {
   aspect-ratio: 1.52;
   box-shadow: 0 15px 45px #59659124;
   background: #506197;
-  text-align: left;
-  transition: transform 0.3s;
-}
-.trailer-preview:hover {
-  transform: translateY(-5px);
-}
-.trailer-preview > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.play-button {
-  position: absolute;
-  left: 50%;
-  top: 45%;
-  transform: translate(-50%, -50%);
-  width: 64px;
-  height: 64px;
-  border: 1px solid #fff;
-  border-radius: 50%;
   display: grid;
   place-items: center;
-  color: white;
-  font-size: 32px;
-  backdrop-filter: blur(3px);
-  padding-left: 4px;
-  background: #ffffff10;
 }
-.trailer-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, #263c71c9);
-  color: white;
-  padding: 40px 20px 19px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 7px;
-  letter-spacing: 1.4px;
+.trailer-coming-soon {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #fff9ee;
+  text-align: center;
 }
-.trailer-caption > span {
-  opacity: 0.7;
+.trailer-preview > video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
+
 .features {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -668,8 +582,8 @@ footer {
   position: relative;
 }
 footer .studio-logo {
-  transform: rotate(-12deg) scale(0.7);
-  transform-origin: left center;
+  width: 48px;
+  height: 48px;
 }
 footer > span {
   font-size: 8px;
@@ -681,52 +595,9 @@ footer > a:last-child {
   color: #bec8e2;
 }
 
-.preview-modal {
-  background: #e8e9f4;
-  max-width: 660px;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  box-shadow: 0 30px 100px #0004;
-  max-height: 90vh;
-  overflow-y: auto;
-}
-.preview-modal > img {
-  width: 100%;
-  max-height: 280px;
-  object-fit: cover;
-}
-.preview-modal > div {
-  padding: 30px;
-}
-.preview-modal h2 {
-  font-size: 36px;
-  margin: 15px 0;
-}
-.preview-modal p {
-  font-size: 13px;
-  line-height: 1.8;
-  margin-bottom: 22px;
-}
-.modal-close {
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  background: #263c73df;
-  color: white;
-  font-size: 25px;
-  z-index: 1;
-}
 @media (min-width: 1600px) {
   .hero-content {
     left: 16%;
-  }
-  .hero-art {
-    background-position: center 60%;
   }
 }
 @media (max-width: 1000px) {
@@ -760,20 +631,11 @@ footer > a:last-child {
     min-height: 760px;
     max-height: 950px;
   }
-  .hero-art {
-    background-position: 62% center;
-  }
-  .hero::after {
-    background:
-      linear-gradient(90deg, #142d6970, transparent),
-      linear-gradient(transparent 45%, #1c346cd9);
-  }
+
   header {
     padding: 25px 7%;
   }
-  .studio-logo strong {
-    font-size: 25px;
-  }
+
   .header-wishlist {
     display: none;
   }
@@ -813,9 +675,7 @@ footer > a:last-child {
     font-size: 8px;
     letter-spacing: 2px;
   }
-  .game-title h1 {
-    font-size: 88px;
-  }
+
   .game-title {
     width: 255px;
   }
@@ -947,7 +807,6 @@ footer > a:last-child {
   --color-midnight: #283f71;
   --font-sans: var(--font-dm-sans);
   --font-serif: var(--font-cormorant);
-  --font-handwritten: var(--font-kalam);
 }
 .hero-image {
   object-fit: cover;
@@ -959,31 +818,7 @@ footer > a:last-child {
 .island-image {
   position: relative;
 }
-.preview-modal {
-  margin: auto;
-  padding: 0;
-  border: 0;
-  color: var(--color-ink);
-  width: calc(100% - 40px);
-}
-.preview-modal:not([open]) {
-  display: none;
-}
-.preview-modal::backdrop {
-  background: #101d3be0;
-  backdrop-filter: blur(10px);
-}
-.preview-modal > img {
-  height: auto;
-  display: block;
-}
-.modal-close {
-  display: grid;
-  place-items: center;
-}
-html:has(dialog[open]) {
-  overflow: hidden;
-}
+
 .footer-wrap {
   background: var(--color-midnight);
   color: #e9eaf7;
@@ -1029,27 +864,18 @@ html:has(dialog[open]) {
   font-size: 9px;
   margin-top: 16px;
 }
-.jellyfish {
-  animation: jellyfish-drift 7s ease-in-out infinite;
-}
-@keyframes jellyfish-drift {
-  0%,
-  100% {
-    transform: translateY(0) rotate(14deg);
-  }
-  50% {
-    transform: translateY(-6px) rotate(16deg);
-  }
-}
+
 @media (min-width: 1600px) {
   .hero-image {
     object-position: center 60%;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 1280px) {
   .hero-image {
     object-position: 90% center;
   }
+}
+@media (max-width: 640px) {
   .menu-button {
     display: inline-flex;
     align-items: center;
@@ -1122,5 +948,17 @@ html:has(dialog[open]) {
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+.game-title img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 640px) {
+  .studio-logo {
+    width: 56px;
+    height: 56px;
   }
 }
