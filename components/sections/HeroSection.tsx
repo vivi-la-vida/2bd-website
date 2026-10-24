@@ -1,16 +1,16 @@
 import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import Button from "@/components/ui/Button";
-import { Jellyfish } from "@/components/ui/Brand";
 import HeroAtmosphere from "@/components/sections/HeroAtmosphere";
-import lake from "@/public/images/lake.png";
+import heroArtwork from "@/public/images/to-be-seen-hero.png";
+import gameLogo from "@/public/logos/to-be-seen.png";
 export default function HeroSection() {
   return (
     <section id="home" className="hero" aria-labelledby="game-title">
       <HeroAtmosphere>
         <Image
-          src={lake}
-          alt=""
+          src={heroArtwork}
+          alt="A wanderer and a glowing jellyfish beside a lake of floating islands under a starry sky"
           fill
           sizes="100vw"
           preload
@@ -20,14 +20,14 @@ export default function HeroSection() {
       </HeroAtmosphere>
       <div className="hero-content">
         <p className="eyebrow">A LITTLE LOST. NEVER ALONE.</p>
-        <div className="game-title">
-          <h1 id="game-title">
-            To be
-            <br />
-            <span>seen</span>
-          </h1>
-          <Jellyfish />
-        </div>
+        <h1 id="game-title" className="game-title">
+          <Image
+            src={gameLogo}
+            alt="To Be Seen"
+            sizes="(max-width: 640px) 255px, 285px"
+            preload
+          />
+        </h1>
         <p className="hero-description">
           A journey through memories.
           <br />A story of finding your way home.

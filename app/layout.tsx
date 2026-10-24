@@ -42,22 +42,6 @@ const serif = localFont({
   variable: "--font-cormorant",
   display: "swap",
 });
-const handwritten = localFont({
-  src: [
-    {
-      path: "../node_modules/@fontsource/kalam/files/kalam-latin-300-normal.woff2",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "../node_modules/@fontsource/kalam/files/kalam-latin-400-normal.woff2",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-  variable: "--font-kalam",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: { default: "To Be Seen — 2BD Studios", template: "%s | To Be Seen" },
@@ -72,10 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${sans.variable} ${serif.variable} ${handwritten.variable}`}
-    >
+    <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body>
         <MotionProvider>
           <a href="#main-content" className="skip-link">
