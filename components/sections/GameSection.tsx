@@ -54,11 +54,6 @@ export default function GameSection() {
             <ArrowUpRight size={14} />
           </Button>
           <span className="availability">IN DEVELOPMENT · PC / STEAM</span>
-          {site.linksAreSamples && (
-            <span className="sample-link-note">
-              Steam search link · Store page coming soon.
-            </span>
-          )}
         </div>
         <TrailerPreview />
       </Reveal>
