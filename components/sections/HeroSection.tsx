@@ -28,8 +28,8 @@ export default function HeroSection() {
           />
         </h1>
         <p className="hero-description">
-          A journey through memories.
-          <br />A story of finding your way home.
+          See through your family&apos;s eyes.
+          <br />Find your way back to life.
         </p>
         <Button href="#game" variant="primary">
           Find your way <ArrowDown size={14} />

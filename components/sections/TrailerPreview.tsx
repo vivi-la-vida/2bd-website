@@ -3,9 +3,8 @@ interface TrailerPreviewProps {
   poster?: string;
 }
 
-// Supply a video source here when the official trailer is ready; the frame stays the same.
 export default function TrailerPreview({
-  videoSrc,
+  videoSrc = "/videos/tbs-oak-city.mp4",
   poster,
 }: TrailerPreviewProps) {
   return (
@@ -15,6 +14,7 @@ export default function TrailerPreview({
           src={videoSrc}
           poster={poster}
           controls
+          playsInline
           preload="none"
           aria-label="To Be Seen trailer"
         >

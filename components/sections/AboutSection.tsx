@@ -11,30 +11,30 @@ export default function AboutSection() {
       <div className="about-art">
         <Image
           src={story}
-          alt="A luminous tree illuminating the quiet waters of the In Between"
+          alt="Main Character and jellyfish guide in the In Between"
           fill
           sizes="(max-width: 640px) 100vw, 65vw"
         />
       </div>
       <div className="about-copy">
-        <span className="eyebrow">MORE THAN A JOURNEY</span>
+        <span className="eyebrow">A STORY OF RECONNECTION</span>
         <h2 id="about-heading">
-          We all leave
+          A family apart.
           <br />
-          <em>a little light behind.</em>
+          <em>A chance to reconnect.</em>
         </h2>
         <p>
-          What if the moments we thought we&apos;d lost were still out there,
-          waiting to be found?
+          After losing your brother, your family moves abroad to begin again.
+          To you, leaving feels like forgetting. The distance between you grows.
         </p>
         <p>
-          As a wandering spirit in the In Between, you&apos;ll cross quiet
-          waters and enter the memories of your family. Discover their stories,
-          untangle the things left unsaid, and find meaning in the beautifully
-          ordinary.
+          Now, caught between life and death, you enter the In-Between. With a
+          jellyfish spirit guide beside you, step into your family&apos;s memories
+          and discover the love, grief, and misunderstandings you couldn&apos;t
+          see before.
         </p>
         <p className="story-quote">
-          A gentle story about love, loss, and what it means to be seen.
+          To find your way back, first understand the people you left behind.
         </p>
         <StoryDetails />
       </div>

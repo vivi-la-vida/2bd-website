@@ -44,9 +44,9 @@ const serif = localFont({
 });
 
 export const metadata: Metadata = {
-  title: { default: "To Be Seen — 2BD Studios", template: "%s | To Be Seen" },
+  title: { default: "2BD Studios", template: "%s | To Be Seen" },
   description:
-    "A little lost. Never alone. A cozy, narrative-driven puzzle adventure about memory, family, and finding your way home. From 2BD Studios.",
+    "A cozy narrative puzzle game between life and death. Relive your family’s memories through their eyes and find your way home. From 2BD Studios.",
 };
 
 export default function RootLayout({
