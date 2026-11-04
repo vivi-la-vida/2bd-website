@@ -19,7 +19,6 @@ export default function HeroSection() {
         />
       </HeroAtmosphere>
       <div className="hero-content">
-        <p className="eyebrow">A LITTLE LOST. NEVER ALONE.</p>
         <h1 id="game-title" className="game-title">
           <Image
             src={gameLogo}
@@ -36,19 +35,10 @@ export default function HeroSection() {
           Find your way <ArrowDown size={14} />
         </Button>
       </div>
-      <span className="hero-note">
-        For the things we leave behind.
-        <br />
-        And the love that stays.
-      </span>
       <a className="scroll-cue" href="#game">
         <span>THE JOURNEY STARTS HERE</span>
         <span className="scroll-line" />
       </a>
-      <div className="hero-bottom">
-        <span>A GAME BY 2BD STUDIOS</span>
-        <span>NARRATIVE ADVENTURE · COMING SOON</span>
-      </div>
     </section>
   );
 }

@@ -22,7 +22,7 @@ export default function HeroAtmosphere({
     <motion.div
       ref={ref}
       className="hero-art"
-      style={reduced ? undefined : { y }}
+      style={{ y: reduced ? 0 : y }}
     >
       {children}
     </motion.div>
