@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "../components/team/team-gallery.css";
+@import "../components/pages/about/components/team-gallery.css";
 
 @layer base {
   html {
