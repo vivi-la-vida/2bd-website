@@ -4,8 +4,9 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import gameArt from "@/public/images/to-be-seen-hero.png";
-import CloudSky from "@/components/originkit/ui/cloud-sky";
-import logo from "@/public/logos/studio-transparent.png";
+import studioLogo from "@/public/logos/studio-transparent.png";
+import StudioHero from "./components/StudioHero";
+
 
 function HomePage() {
   return (
@@ -13,12 +14,13 @@ function HomePage() {
       <StudioHero />
       <section id="studio" className="home-studio section-pad" aria-labelledby="studio-heading">
         <Reveal className="content-width home-studio-grid">
-          <div><span className="eyebrow">ABOUT 2BD STUDIOS</span>
-            <h2 id="studio-heading">Thoughtful worlds.<br /><em>Stories that stay.</em></h2>
+          <div className="home-studio-logo">
+            <Image src={studioLogo} alt="2BD Studios" sizes="(max-width: 760px) 65vw, 360px" />
           </div>
-          <div className="home-section-copy">
-            <p>We’re 2BD Studios, a small independent team creating games with heart.</p>
-            <p>We believe a little wonder can bring us closer. Through playful discovery and personal stories, we make space for empathy, connection, and the many ways we see the world.</p>
+          <div className="home-section-copy home-studio-copy">
+            <h2 id="studio-heading">Welcome!</h2>
+            <p className="home-studio-introduction">We are 2BD Studios.</p>
+            <p>We&apos;re a nine person team that started at Duke University&apos;s Game Design, Development, and Innovation program. We believe games should do more than follow trends. We draw inspiration from personal experiences to create thoughtful, emotionally resonant worlds that encourage reflection, empathy, and human connection.</p>
             <Link href="/about" className="button lavender">About the studio <ArrowUpRight size={16} /></Link>
           </div>
         </Reveal>
@@ -36,31 +38,6 @@ function HomePage() {
         </Reveal>
       </section>
     </main>
-  );
-}
-
-function StudioHero() {
-  return (
-    <section id="home" className="studio-hero" aria-labelledby="studio-title">
-      <div className="studio-sky" aria-hidden="true">
-        <CloudSky
-          background="#747ba9"
-          baseColor="#eeebf3"
-          accentColor="#faf7ff"
-          sun={{ x: 100, y: 100, glow: "#eee5ff" }}
-          style={{ width: "100%", height: "100%", minWidth: 0, minHeight: 0 }}
-        />
-      </div>
-      <div className="studio-hero-content">
-        <h1 id="studio-title" className="studio-hero-mark">
-          <Image src={logo} alt="2BD Studios" preload sizes="(max-width: 640px) 85vw, 70vh" />
-        </h1>
-        <p className="studio-tagline">EST. 2025</p>
-      </div>
-      <a className="studio-scroll" href="#studio">
-        <span>Scroll</span><span className="studio-scroll-line" />
-      </a>
-    </section>
   );
 }
 

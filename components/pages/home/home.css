@@ -33,11 +33,24 @@
   padding: 24px 24px 140px;
 }
 .studio-hero-mark {
+  position: relative;
   margin: 0;
   width: min(72vh, 680px, 85vw);
-  animation: studio-logo-arrive 1.8s cubic-bezier(.16, 1, .3, 1) both;
 }
 .studio-hero-mark img { display: block; width: 100%; height: auto; }
+.studio-logo-animation { position: absolute; inset: 0; }
+.studio-hero:not(.logo-complete) .studio-hero-mark > img:first-child { visibility: hidden; }
+.studio-hero .studio-tagline,
+.studio-hero .studio-scroll {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .6s ease;
+}
+.studio-hero.logo-complete .studio-tagline,
+.studio-hero.logo-complete .studio-scroll {
+  opacity: 1;
+  visibility: visible;
+}
 .studio-tagline, .studio-scroll {
   color: var(--home-ink);
   text-shadow: 0 1px 2px #ffffffb0, 0 3px 10px #364d7526;
@@ -60,16 +73,26 @@
   white-space: nowrap;
 }
 .studio-scroll-line { height: 56px; width: 1px; background: #29365470; }
-@keyframes studio-logo-arrive {
-  from { opacity: 0; transform: translateY(35px) scale(.9) rotate(-3deg); }
-  to { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
-}
 .home-studio, .home-game { background: var(--home-sky); color: var(--home-ink); }
 .home-studio-grid, .home-game-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(36px, 6vw, 88px);
   align-items: center;
+}
+.home-studio-grid { grid-template-columns: .7fr 1.3fr; }
+.home-studio-logo img {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  margin-inline: auto;
+}
+.home-studio-copy h2 { margin-bottom: 24px; }
+.home-studio-copy .home-studio-introduction {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.5;
 }
 .home-studio .eyebrow, .home-game .eyebrow {
   margin-bottom: 24px;
@@ -103,6 +126,7 @@ body:has(.studio-homepage) .footer-wrap footer { color: var(--color-ink); }
 }
 @media (max-width: 760px) {
   .home-studio-grid, .home-game-grid { grid-template-columns: 1fr; gap: 32px; }
+  .home-studio-logo img { max-width: min(65vw, 280px); }
   .home-game-art { min-height: 330px; }
   .studio-tagline, .studio-scroll { font-size: 11px; letter-spacing: 3px; }
   .studio-hero-content { padding-bottom: 120px; }
