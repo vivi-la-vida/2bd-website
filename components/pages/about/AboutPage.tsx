@@ -1,7 +1,8 @@
 import SectionHeading from "@/components/ui/SectionHeading";
-import TeamGallery from "@/components/team/TeamGallery";
+import TeamGallery from "@/components/pages/about/components/TeamGallery";
 import Reveal from "@/components/ui/Reveal";
-export default function TeamSection() {
+
+function TeamSection() {
   return (
     <section
       id="team"
@@ -29,4 +30,8 @@ export default function TeamSection() {
       </p>
     </section>
   );
+}
+
+export default function AboutPage() {
+  return <main id="main-content" className="dedicated-page"><h1 className="sr-only">About 2BD Studios</h1><TeamSection /></main>;
 }

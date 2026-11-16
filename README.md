@@ -20,33 +20,37 @@ This Windows environment required the documented `experimental.turbopackPluginRu
 ## Organization
 
 ```text
-app/                   Root layout, homepage, shared styles
-  about/page.tsx       Dedicated story view
+app/                   Root layout, route entry points, shared styles
+  page.tsx             Home route
+  about/page.tsx       Studio team route
   game/page.tsx        Dedicated game view
-  team/page.tsx        Dedicated team view
+  team/page.tsx        Legacy redirect to About
   contact/page.tsx     Dedicated contact view
 components/
   layout/              Shared fixed navigation and footer
-  sections/            Five reusable sections and their interactive controls
-  team/                Gallery, profile card, thumbnail, gallery styles
+  pages/
+    home/              HomePage, studio hero, and homepage styles
+    game/              GamePage and components for atmosphere, story, and trailer
+    about/             AboutPage and team gallery components/styles
+    contact/           ContactPage and contact form
   ui/                  Buttons, headings, brand marks, reveal/motion helpers
 data/                  Team roster, game features, studio links
 types/                 TeamMember interface
 public/images/         Original prototype illustrations
 ```
 
-The homepage composes all five sections into one continuous scroll. Dedicated routes reuse the same section components. Every navigation link returns to its homepage section, including from dedicated routes. Current-section highlighting follows scrolling, and mobile navigation supports Escape.
+The four page implementations live under `components/pages/`. Thin route files in `app/` expose Home (`/`), Game (`/game`), About (`/about`), and Contact (`/contact`) and define route metadata. The legacy `/team` route redirects to About. Home contains the studio hero, studio introduction, and game preview. Navigation links between pages and hides over the home hero; mobile navigation supports Escape. Page-specific interactive components live in each page folder’s `components/` directory, while reusable UI, layout, and Originkit components stay in their shared folders.
 
 Static sections remain Server Components. Browser behavior is confined to navigation, gallery, story expansion, form preview, and animation helpers. Images use responsive `next/image` sizes; the hero is preloaded. The original font families are bundled from Fontsource packages and self-hosted with `next/font/local`; builds and visitors do not need Google Fonts access. Font licenses are included with those packages.
 
 ## Update content
 
 - **Team:** Edit `data/team.ts`. The roster follows the supplied CSV order and contains the approved names, roles, LinkedIn links, and matching headshots in `public/images/team/`. `portfolio` is optional: Skylar’s CSV entry has none, so that button is hidden. Put replacement portraits in the same folder and update `photo`; use `photoPosition` to keep the face framed consistently in the featured card and thumbnails. Existing biography wording remains temporary, with names and neutral pronouns updated; replace it with approved bios and set `teamBiosAreDraft` to `false` when ready. The count and thumbnails follow the data automatically.
-- **Game:** Edit `data/game.ts` for the four feature cards. Section-specific copy is in the matching file under `components/sections/`.
+- **Game:** Edit `data/game.ts` for the four feature cards. Game page copy is in `components/pages/game/GamePage.tsx`.
 - **Studio links:** Edit `email`, `steam`, and `socials` in `data/site.ts`. The current approved destinations are the To Be Seen Steam page, 2BD Studios Instagram and LinkedIn, and `twobdstudios@gmail.com`. Discord and YouTube are omitted. `linksAreSamples` is `false`, so the old prototype contact notice is hidden.
 - **Illustrations:** Replace images in `public/images/`, preserving filenames or updating imports. Keep meaningful alternative text for content images. Official transparent brand marks are in `public/logos/`.
 - **Typography and icons:** Primary interface text uses the reduced readability scale: a minimum of 18px, a 21.6px base, and regular-weight labels/buttons. Secondary hero credits, biography notices, and footer copyright use a subdued 12px caption size. The navigation studio logo is 96px on desktop and 84px on mobile. `app/favicon.ico` includes 16–256px studio-logo sizes, and `app/icon.png` supplies a transparent 512px browser icon. Both are generated from the official studio logo.
-- **Styling:** Shared colors and font variables are in the Tailwind `@theme` block in `app/globals.css`. Gallery styling is in `components/team/team-gallery.css`. Original visual rules were retained; obsolete prototype carousel rules were removed.
+- **Styling:** Shared colors and font variables are in the Tailwind `@theme` block in `app/globals.css`. Gallery styling is in `components/pages/about/components/team-gallery.css`. Original visual rules were retained; obsolete prototype carousel rules were removed.
 
 ## Interactions and accessibility
 

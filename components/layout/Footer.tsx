@@ -7,7 +7,7 @@ export default function Footer() {
         <Link href="/" aria-label="2BD Studios home">
           <StudioLogo />
         </Link>
-        <span>© 2026 2BD Studios. Made with a little wonder.</span>
+        <span>© 2026 2BD Studios</span>
         <a href="#main-content">BACK TO THE TOP ↑</a>
       </footer>
     </div>
