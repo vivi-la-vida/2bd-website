@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "../components/team/team-gallery.css";
+@import "../components/pages/about/components/team-gallery.css";
 
 @layer base {
   html {
@@ -64,6 +64,7 @@
   position: absolute;
   inset: 0;
   z-index: -2;
+  animation: hero-art-fade 1.4s ease-out both;
 }
 .hero::after {
   content: "";
@@ -144,9 +145,17 @@ nav a.active::after {
   color: #fff9ee;
   padding-block: 16px;
   transition:
+    transform 0.35s,
+    opacity 0.35s,
     background 0.35s,
     box-shadow 0.35s,
     padding 0.35s;
+}
+.site-header.is-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 .site-header .studio-logo {
   width: 96px;
@@ -177,6 +186,7 @@ nav a.active::after {
   top: 26%;
   max-width: min(600px, 82%);
   text-shadow: 0 2px 25px #182b6b44;
+  animation: hero-content-enter 0.9s 0.15s ease-out both;
 }
 .eyebrow {
   font-size: 18px;
@@ -245,11 +255,40 @@ nav a.active::after {
   font-size: 18px;
   letter-spacing: 2.5px;
   color: #e3e6f4;
+  animation: hero-cue-enter 0.8s 0.65s ease-out both;
 }
 .scroll-line {
   height: 35px;
   width: 1px;
   background: linear-gradient(#e9e7e8, transparent);
+}
+@keyframes hero-art-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes hero-content-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes hero-cue-enter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
 }
 .hero-bottom {
   position: absolute;
@@ -862,7 +901,7 @@ footer > a:last-child {
   padding-bottom: 25px;
 }
 .dedicated-page {
-  padding-top: 92px;
+  padding-top: 128px;
   min-height: calc(100svh - 160px);
 }
 .skip-link {

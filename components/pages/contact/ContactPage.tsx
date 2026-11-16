@@ -1,6 +1,7 @@
 import { site } from "@/data/site";
-import ContactForm from "@/components/sections/ContactForm";
-export default function ContactSection() {
+import ContactForm from "@/components/pages/contact/components/ContactForm";
+
+function ContactSection() {
   return (
     <section
       id="contact"
@@ -45,4 +46,8 @@ export default function ContactSection() {
       </div>
     </section>
   );
+}
+
+export default function ContactPage() {
+  return <main id="main-content" className="dedicated-page"><h1 className="sr-only">Say Hello</h1><ContactSection /></main>;
 }
