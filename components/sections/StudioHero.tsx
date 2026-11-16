@@ -6,7 +6,13 @@ export default function StudioHero() {
   return (
     <section id="home" className="studio-hero" aria-labelledby="studio-title">
       <div className="studio-sky" aria-hidden="true">
-        <CloudSky style={{ width: "100%", height: "100%", minWidth: 0, minHeight: 0 }} />
+        <CloudSky
+          background="#747ba9"
+          baseColor="#eeebf3"
+          accentColor="#faf7ff"
+          sun={{ x: 100, y: 100, glow: "#eee5ff" }}
+          style={{ width: "100%", height: "100%", minWidth: 0, minHeight: 0 }}
+        />
       </div>
       <div className="studio-hero-content">
         <h1 id="studio-title" className="studio-hero-mark">
