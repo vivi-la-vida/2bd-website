@@ -44,9 +44,9 @@ const serif = localFont({
 });
 
 export const metadata: Metadata = {
-  title: { default: "2BD Studios", template: "%s | To Be Seen" },
+  title: { default: "2BD Studios", template: "%s | 2BD Studios" },
   description:
-    "A cozy narrative puzzle game between life and death. Relive your family’s memories through their eyes and find your way home. From 2BD Studios.",
+    "Discover 2BD Studios, the team behind To Be Seen, a cozy narrative puzzle game between life and death.",
 };
 
 export default function RootLayout({

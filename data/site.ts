@@ -11,5 +11,5 @@ export const site = {
     },
   ],
 };
-export const chapters = ["Home", "Game", "About", "Team", "Contact"] as const;
+export const chapters = ["Home", "Game", "About", "Contact"] as const;
 export type Chapter = (typeof chapters)[number];

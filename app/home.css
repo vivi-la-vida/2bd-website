@@ -1,0 +1,80 @@
+.studio-hero {
+  position: relative;
+  isolation: isolate;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  color: #fff;
+  background: #a5bbff;
+}
+.studio-sky { position: absolute; inset: 0; z-index: -1; }
+.studio-hero-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 24px 140px;
+}
+.studio-hero-mark {
+  margin: 0;
+  width: min(72vh, 680px, 85vw);
+  animation: studio-logo-arrive 1.8s cubic-bezier(.16, 1, .3, 1) both;
+}
+.studio-hero-mark img { display: block; width: 100%; height: auto; }
+.studio-tagline, .studio-scroll {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-align: center;
+}
+.studio-tagline { margin-top: 18px; }
+.studio-scroll {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  white-space: nowrap;
+}
+.studio-scroll-line { height: 56px; width: 1px; background: #ffffffa0; }
+@keyframes studio-logo-arrive {
+  from { opacity: 0; transform: translateY(35px) scale(.9) rotate(-3deg); }
+  to { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+}
+.home-studio { background: var(--color-mist); }
+.home-studio-grid, .home-game-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(36px, 6vw, 88px);
+  align-items: center;
+}
+.home-studio .eyebrow, .home-game .eyebrow { margin-bottom: 24px; }
+.home-section-copy p { font-size: 18px; line-height: 1.9; }
+.home-section-copy p + p { margin-top: 18px; }
+.home-section-copy .button { margin-top: 30px; }
+.home-game { background: #293d70; color: #fff9ee; }
+.home-game-grid { grid-template-columns: 1.15fr 1fr; }
+.home-game-art { position: relative; min-height: 480px; border-radius: 8px; overflow: hidden; }
+.home-game-art img { display: block; width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; object-position: 65% center; }
+.home-game .home-game-lead {
+  font-family: var(--font-cormorant), serif;
+  font-size: 32px;
+  line-height: 1.25;
+  margin-top: 24px;
+}
+@media (max-width: 760px) {
+  .home-studio-grid, .home-game-grid { grid-template-columns: 1fr; gap: 32px; }
+  .home-game-art { min-height: 330px; }
+  .studio-tagline, .studio-scroll { font-size: 11px; letter-spacing: 3px; }
+  .studio-hero-content { padding-bottom: 120px; }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-hero-mark { animation: none; }
+}
