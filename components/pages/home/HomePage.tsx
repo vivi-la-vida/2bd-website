@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import gameArt from "@/public/images/to-be-seen-hero.png";
+import gameArt from "@/public/images/to-be-seen-landscape.png";
 import studioLogo from "@/public/logos/studio-transparent.png";
 import StudioHero from "./components/StudioHero";
 
@@ -25,14 +25,16 @@ function HomePage() {
           </div>
         </Reveal>
       </section>
-      <section className="home-game section-pad" aria-labelledby="home-game-heading">
-        <Reveal className="content-width home-game-grid">
-          <div className="home-game-art"><Image src={gameArt} alt="A wanderer and jellyfish spirit guide beneath a star-filled sky" sizes="(max-width: 760px) 100vw, 55vw" placeholder="blur" /></div>
+      <section id="home-game" className="home-game section-pad" aria-labelledby="home-game-heading">
+        <div className="home-game-art"><Image src={gameArt} alt="A wanderer beneath a tree in a dreamlike purple landscape" fill sizes="100vw" placeholder="blur" /></div>
+        <svg className="home-game-cloud-divider" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
+          <path fillRule="evenodd" d="M0 0 H1440 V160 H0 Z M0 90 C30 30 120 20 160 65 C200 0 300 0 350 55 C400 20 470 20 510 65 C560 0 670 0 720 55 C770 15 870 15 910 65 C970 0 1070 0 1120 60 C1180 20 1270 30 1300 80 C1360 40 1410 45 1440 75 L1440 160 H0 Z" />
+        </svg>
+        <Reveal className="content-width home-game-content">
           <div className="home-section-copy">
             <span className="eyebrow">OUR GAME · IN DEVELOPMENT</span>
             <h2 id="home-game-heading">To Be Seen</h2>
-            <p className="home-game-lead">Through their eyes.<br /><em>A little closer to home.</em></p>
-            <p>A cozy narrative puzzle game between life and death. Guided by a jellyfish spirit, step into your family’s memories, piece together their hidden truths, and find your way back to life.</p>
+            <p>A cozy puzzle adventure about family and memory. Step into your loved ones’ memories and find your way back to life.</p>
             <Link href="/game" className="button lavender">Explore To Be Seen <ArrowUpRight size={16} /></Link>
           </div>
         </Reveal>
