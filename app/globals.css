@@ -145,9 +145,17 @@ nav a.active::after {
   color: #fff9ee;
   padding-block: 16px;
   transition:
+    transform 0.35s,
+    opacity 0.35s,
     background 0.35s,
     box-shadow 0.35s,
     padding 0.35s;
+}
+.site-header.is-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 .site-header .studio-logo {
   width: 96px;
@@ -893,7 +901,7 @@ footer > a:last-child {
   padding-bottom: 25px;
 }
 .dedicated-page {
-  padding-top: 92px;
+  padding-top: 128px;
   min-height: calc(100svh - 160px);
 }
 .skip-link {
