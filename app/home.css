@@ -22,6 +22,27 @@
   background: linear-gradient(to bottom, transparent, var(--home-sky));
 }
 .studio-sky { position: absolute; inset: 0; z-index: -1; }
+.cloud-sky-canvas {
+  opacity: 0;
+  transition: opacity 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+.cloud-sky-canvas[data-ready="true"] { opacity: 1; }
+.studio-hero.logo-complete .studio-hero-mark {
+  animation: studio-logo-fade 300ms ease-out both;
+}
+@keyframes studio-logo-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .studio-hero.logo-complete .studio-hero-mark {
+    animation-name: studio-logo-pop;
+  }
+  @keyframes studio-logo-pop {
+    from { opacity: 0; transform: translateY(12px) scale(.88); filter: blur(4px); }
+    to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  }
+}
 .studio-hero-content {
   /* Let the sky canvas receive pointer movement through the logo and copy. */
   pointer-events: none;
@@ -38,11 +59,13 @@
   width: min(72vh, 680px, 85vw);
 }
 .studio-hero-mark img { display: block; width: 100%; height: auto; }
+.studio-hero:not(.logo-complete) .studio-hero-mark img { visibility: hidden; }
 .studio-hero .studio-tagline,
 .studio-hero .studio-scroll {
   opacity: 0;
   visibility: hidden;
-  transition: opacity .6s ease;
+  transition: opacity 300ms ease-out;
+  transition-delay: 100ms;
 }
 .studio-hero.logo-complete .studio-tagline,
 .studio-hero.logo-complete .studio-scroll {
@@ -70,7 +93,7 @@
   gap: 24px;
   white-space: nowrap;
 }
-.studio-scroll-line { height: 56px; width: 1px; background: #29365470; }
+.studio-scroll-line { height: 35px; width: 1px; background: linear-gradient(#364d7526, transparent); }
 .home-studio, .home-game { background: var(--home-sky); color: var(--home-ink); }
 .home-studio-content {
   max-width: 780px;
@@ -183,9 +206,4 @@ body:has(.studio-homepage) .footer-wrap footer { color: var(--color-ink); }
   .home-game-cloud-divider { height: 160px; }
   .studio-tagline, .studio-scroll { font-size: 11px; letter-spacing: 3px; }
   .studio-hero-content { padding-bottom: 120px; }
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-  .studio-hero-mark { animation: none; }
 }

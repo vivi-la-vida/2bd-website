@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import "./story.css";
 export const metadata: Metadata = { title: "The Game" };
 import Image from "next/image";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import HeroAtmosphere from "@/app/game/_components/HeroAtmosphere";
 import heroArtwork from "@/public/images/to-be-seen-hero.png";
-import gameLogo from "@/public/logos/to-be-seen.png";
+import treeArtwork from "@/public/images/to-be-seen-tree.png";
+import gameLogo from "@/public/logos/to-be-seen-trimmed.png";
 import { features } from "@/data/game";
 import { site } from "@/data/site";
 import { SteamIcon } from "@/components/ui/Brand";
@@ -14,15 +15,21 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import TrailerPreview from "@/app/game/_components/TrailerPreview";
 import StoryDetails from "@/app/game/_components/StoryDetails";
-import story from "@/public/images/story.png";
+function CloudDivider({ position }: { position: "top" | "bottom" }) {
+  return (
+    <svg className={`game-cloud-divider game-cloud-divider--${position}`} viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path d="M0 0H1440V75C1410 45 1360 40 1300 80C1270 30 1180 20 1120 60C1070 0 970 0 910 65C870 15 770 15 720 55C670 0 560 0 510 65C470 20 400 20 350 55C300 0 200 0 160 65C120 20 30 30 0 90Z" />
+    </svg>
+  );
+}
 
 function HeroSection() {
   return (
     <section id="home" className="hero" aria-labelledby="game-title">
       <HeroAtmosphere>
         <Image
-          src={heroArtwork}
-          alt="A wanderer and a glowing jellyfish beside a lake of floating islands under a starry sky"
+          src={treeArtwork}
+          alt="A wanderer beneath a pale tree overlooking a dreamlike lavender landscape"
           fill
           sizes="100vw"
           preload
@@ -35,7 +42,7 @@ function HeroSection() {
           <Image
             src={gameLogo}
             alt="To Be Seen"
-            sizes="(max-width: 640px) 255px, 285px"
+            sizes="(max-width: 640px) 82vw, 340px"
             preload
           />
         </h1>
@@ -43,9 +50,6 @@ function HeroSection() {
           See through your family&apos;s eyes.
           <br />Find your way back to life.
         </p>
-        <Button href="#game" variant="primary">
-          Find your way <ArrowDown size={14} />
-        </Button>
       </div>
       <a className="scroll-cue" href="#game">
         <span>THE JOURNEY STARTS HERE</span>
@@ -83,8 +87,6 @@ function GameSection() {
         <div className="game-copy">
           <h3>
             A spirit in the In-Between.
-            <br />
-            A way back home.
           </h3>
           <p>
             To Be Seen is a cozy, narrative-driven puzzle game set between life
@@ -114,7 +116,7 @@ function GameSection() {
                   src={`/images/${feature.image}.png`}
                   alt={`${feature.title}: a painted island floating on water`}
                   fill
-                  sizes="(max-width: 640px) 43vw, 260px"
+                  unoptimized
                 />
               </div>
               <span className="feature-number">0{index + 1}</span>
@@ -139,14 +141,16 @@ function AboutSection() {
       className="about-section game-story"
       aria-labelledby="about-heading"
     >
+      <CloudDivider position="top" />
       <div className="about-art">
         <Image
-          src={story}
-          alt="Main Character and jellyfish guide in the In Between"
+          src={heroArtwork}
+          alt="A wanderer and a glowing jellyfish beside a lake of floating islands under a starry sky"
           fill
           sizes="100vw"
         />
       </div>
+      <div className="content-width story-content">
       <div className="about-copy">
         <span className="eyebrow">A STORY OF RECONNECTION</span>
         <h2 id="about-heading">
@@ -169,10 +173,11 @@ function AboutSection() {
         </p>
         <StoryDetails />
       </div>
+      </div>
     </section>
   );
 }
 
 export default function GamePage() {
-  return <main id="main-content"><HeroSection /><GameSection /><AboutSection /></main>;
+  return <main id="main-content" className="game-page"><HeroSection /><GameSection /><AboutSection /></main>;
 }

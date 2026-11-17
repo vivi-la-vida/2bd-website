@@ -12,7 +12,7 @@
 }
 .game-story .about-copy {
   width: min(460px, 42vw);
-  padding-block: 90px;
+  padding-block: 170px 90px;
   text-shadow: 0 2px 14px #1c223344;
 }
 .game-story .about-copy h2 {
@@ -29,6 +29,60 @@
   .game-story::after {
     background: linear-gradient(90deg, #242c48ed, #303957b8), linear-gradient(180deg, transparent 60%, #252d4590);
   }
-  .game-story .about-copy { width: auto; margin-inline: 7%; padding-block: 70px; }
+  .game-story .about-copy { width: auto; margin-inline: 7%; padding-block: 120px 70px; }
   .game-story .about-copy > p { max-width: 460px; }
+}
+
+/* Static SVG silhouettes echo the homepage without adding a render loop. */
+.game-page { --game-section-sky: #eeebf3; }
+.game-page .hero {
+  height: 100svh;
+  min-height: 600px;
+  max-height: none;
+  padding: 0;
+}
+.game-page .hero-content {
+  position: absolute;
+  inset-inline-start: max(7%, calc((100% - 1130px) / 2));
+  top: 50%;
+  transform: translateY(-50%);
+  width: max-content;
+  max-width: 82%;
+  animation: none;
+}
+.game-page .game-title {
+  /* Let the sentence determine the column width, not the image's intrinsic size. */
+  contain: inline-size;
+  width: 100%;
+  margin: 0 0 36px;
+}
+.game-page .game-title img { width: 100%; height: auto; }
+.game-page .hero-description { margin: 0; }
+.game-page .scroll-cue { bottom: 32px; }
+.game-page .hero-image { object-position: 75% center; }
+.game-page .game-section {
+  background: linear-gradient(to bottom, transparent 65%, var(--game-section-sky)), radial-gradient(ellipse at 80% 45%, #d1d6ee90, transparent 60%), var(--game-section-sky);
+}
+.game-cloud-divider {
+  position: absolute;
+  inset-inline: 0;
+  width: 100%;
+  height: clamp(64px, 8vw, 120px);
+  fill: var(--game-section-sky);
+  pointer-events: none;
+  z-index: 1;
+}
+.game-cloud-divider--top { top: -1px; }
+.game-page .trailer-preview { aspect-ratio: 16 / 9; min-width: 0; background: #171c30; }
+.game-page .trailer-preview iframe { display: block; width: 100%; height: 100%; border: 0; }
+.game-page .game-intro { grid-template-columns: minmax(0, .8fr) minmax(0, 1.3fr); }
+.game-page .about-copy { margin-inline-start: max(7%, calc((100% - 1130px) / 2)); margin-inline-end: 7%; }
+@media (max-width: 760px) {
+  .game-page .game-intro { grid-template-columns: minmax(0, 1fr); }
+  .game-page .trailer-preview { grid-row: auto; }
+  .game-page .about-copy { margin-inline: 7%; }
+  .game-page .hero-image { object-position: 80% center; }
+}
+@media (max-width: 640px) {
+  .game-page .scroll-cue { font-size: 12px; width: 82%; text-align: center; }
 }
