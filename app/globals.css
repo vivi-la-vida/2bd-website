@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "../components/pages/about/components/team-gallery.css";
+@import "./about/_components/team-gallery.css";
 
 @layer base {
   html {
@@ -142,8 +142,11 @@ nav a.active::after {
   position: fixed;
   inset: 0 0 auto;
   z-index: 15;
-  color: #fff9ee;
-  padding-block: 16px;
+  color: #403856;
+  background: #eeebf3eb;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding-block: 8px;
   transition:
     transform 0.35s,
     opacity 0.35s,
@@ -158,28 +161,42 @@ nav a.active::after {
   pointer-events: none;
 }
 .site-header .studio-logo {
-  width: 96px;
-  height: 96px;
+  width: 68px;
+  height: 68px;
 }
 .site-header nav {
   margin-left: auto;
+  gap: 28px;
 }
 .site-header.is-scrolled {
-  background: #293d70dc;
+  background: #eeebf3eb;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   box-shadow:
-    0 1px 0 #c8c8ee26,
-    0 8px 28px #1b2c5512;
-  padding-block: 12px;
+    0 1px 0 #635b911c,
+    0 6px 20px #3932520a;
+  padding-block: 8px;
 }
 .site-header nav a {
+  font-size: 16px;
+  letter-spacing: 1.2px;
   opacity: 0.85;
 }
 .site-header nav a.active {
   opacity: 1;
-  color: #f2e5cc;
+  color: #635b91;
 }
+.site-header nav a.active::after { background: #635b91; }
+.site-header .header-wishlist {
+  font-size: 14px;
+  letter-spacing: .7px;
+  padding: 10px 14px;
+  background: #635b91;
+  border-color: #635b91;
+  color: #fff;
+}
+.site-header .header-wishlist:hover { background: #514775; }
+.site-header a:focus-visible, .site-header button:focus-visible { outline-color: #635b91; }
 .hero-content {
   position: absolute;
   left: 10.5%;
@@ -510,7 +527,7 @@ nav a.active::after {
 }
 @media (max-width: 640px) {
   .site-header.is-scrolled {
-    padding-block: 12px;
+    padding-block: 8px;
   }
   .site-header .menu-button {
     margin-left: auto;
@@ -708,7 +725,7 @@ footer > a:last-child {
     font-size: 18px;
     letter-spacing: 1px;
     padding: 10px;
-    border: 1px solid #ffffff60;
+    border: 1px solid #635b914d;
     border-radius: 4px;
   }
   nav {
@@ -738,7 +755,7 @@ footer > a:last-child {
     max-width: 100%;
   }
   .hero-content > .eyebrow {
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 2px;
   }
 
@@ -994,8 +1011,8 @@ footer > a:last-child {
     right: 7%;
     transform: none;
     padding: 22px;
-    background: #243d74f5;
-    border: 1px solid #ffffff30;
+    background: #f2eff8fa;
+    border: 1px solid #635b912b;
     border-radius: 8px;
     flex-direction: column;
     gap: 10px;
@@ -1025,10 +1042,10 @@ footer > a:last-child {
     height: 56px;
   }
   .site-header {
-    padding-block: 12px;
+    padding-block: 8px;
   }
   .site-header .studio-logo {
-    width: 84px;
-    height: 84px;
+    width: 60px;
+    height: 60px;
   }
 }

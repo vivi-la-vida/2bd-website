@@ -1,0 +1,42 @@
+.site-header, .site-header.is-scrolled {
+  --nav-background: #eeebf3eb;
+  --nav-ink: #403856;
+  --nav-accent: #635b91;
+  --nav-button: #635b91;
+  --nav-button-ink: #fff;
+  --nav-border: #635b914d;
+  background: var(--nav-background);
+  color: var(--nav-ink);
+  padding-block: 8px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 1px 0 #635b911c, 0 6px 20px #3932520a;
+  transition: background .45s ease, color .3s ease, box-shadow .45s ease, transform .35s, opacity .35s;
+}
+.site-header[data-surface="dusk"] { --nav-background: #514d6de8; }
+.site-header[data-surface="blue"] { --nav-background: #344c7be8; }
+.site-header[data-surface="midnight"] { --nav-background: #283f71eb; }
+.site-header[data-surface="dusk"], .site-header[data-surface="blue"], .site-header[data-surface="midnight"] {
+  --nav-ink: #fff9ee;
+  --nav-accent: #f0e2ff;
+  --nav-button: #e6dff5;
+  --nav-button-ink: #403856;
+  --nav-border: #e6dff570;
+}
+.site-header .studio-logo { width: 68px; height: 68px; }
+.site-header nav { gap: 28px; }
+.site-header nav a { font-size: 16px; letter-spacing: 1.2px; }
+.site-header nav a.active { color: var(--nav-accent); }
+.site-header nav a.active::after { background: var(--nav-accent); }
+.site-header .header-wishlist { font-size: 14px; letter-spacing: .7px; padding: 10px 14px; background: var(--nav-button); border-color: var(--nav-button); color: var(--nav-button-ink); transition: background .3s, color .3s; }
+.site-header .header-wishlist:hover { filter: brightness(1.08); }
+.site-header a:focus-visible, .site-header button:focus-visible { outline-color: var(--nav-accent); }
+@media (max-width: 1200px) {
+  .site-header .menu-button { font-size: 16px; border-color: var(--nav-border); }
+  .site-header nav.open { background: var(--nav-background); border-color: var(--nav-border); backdrop-filter: blur(18px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .site-header.is-scrolled, .site-header .header-wishlist { transition: none; }
+}
+@media (max-width: 640px) {
+  .site-header .studio-logo { width: 60px; height: 60px; }
+}
