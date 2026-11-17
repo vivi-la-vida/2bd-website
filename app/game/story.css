@@ -1,0 +1,34 @@
+.game-story {
+  background: #323952;
+  min-height: 760px;
+}
+.game-story .about-art { inset: 0; }
+.game-story .about-art img { object-fit: cover; object-position: 70% center; }
+.game-story::after {
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #242c48e8 0%, #2d3454d6 26%, #343b5b9c 43%, #343b5b30 65%, transparent 85%),
+    linear-gradient(180deg, #32395225, transparent 25%, #252d4540);
+}
+.game-story .about-copy {
+  width: min(460px, 42vw);
+  padding-block: 90px;
+  text-shadow: 0 2px 14px #1c223344;
+}
+.game-story .about-copy h2 {
+  font-size: clamp(46px, 4.2vw, 64px);
+  color: #fff8ef;
+  text-wrap: balance;
+}
+.game-story .about-copy .eyebrow { color: #ddd5ed; }
+.game-story .about-copy > p { color: #eeeaf5; line-height: 1.85; }
+.game-story .about-copy .story-quote { color: #f3e7ee; }
+@media (max-width: 760px) {
+  .game-story .about-art { inset: 0; }
+  .game-story .about-art img { object-position: 65% center; }
+  .game-story::after {
+    background: linear-gradient(90deg, #242c48ed, #303957b8), linear-gradient(180deg, transparent 60%, #252d4590);
+  }
+  .game-story .about-copy { width: auto; margin-inline: 7%; padding-block: 70px; }
+  .game-story .about-copy > p { max-width: 460px; }
+}
