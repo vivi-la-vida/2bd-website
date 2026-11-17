@@ -1,39 +1,29 @@
 import type { Metadata } from "next";
-export const metadata: Metadata = { title: "About" };
-import SectionHeading from "@/components/ui/SectionHeading";
 import TeamGallery from "@/app/about/_components/TeamGallery";
 import Reveal from "@/components/ui/Reveal";
+import "./about.css";
 
-function TeamSection() {
-  return (
-    <section
-      id="team"
-      className="team-section section-pad"
-      aria-labelledby="team-heading"
-    >
-      <Reveal>
-        <SectionHeading
-          id="team-heading"
-          eyebrow="SMALL STUDIO. FULL HEARTS."
-          title={
-            <>
-              The people <em>behind the wonder.</em>
-            </>
-          }
-        >
-          We&apos;re 2BD Studios. A small independent team making
-          <br />
-          thoughtful worlds and stories that stay with you.
-        </SectionHeading>
-      </Reveal>
-      <TeamGallery />
-      <p className="team-note">
-        A few different perspectives. One shared adventure.
-      </p>
-    </section>
-  );
-}
+export const metadata: Metadata = { title: "About" };
 
 export default function AboutPage() {
-  return <main id="main-content" className="dedicated-page"><h1 className="sr-only">About 2BD Studios</h1><TeamSection /></main>;
+  return (
+    <main id="main-content" className="dedicated-page about-page">
+      <section className="studio-introduction section-pad" aria-labelledby="studio-heading">
+        <Reveal className="studio-introduction-copy content-width">
+          <h1 id="studio-heading">About the Studio</h1>
+          <p className="studio-belief"><strong>We create games that make players feel something.</strong></p>
+          <p>2BD Studios began as a nine-person team in Duke University&apos;s Game Design, Development, and Innovation program. We came together to build thoughtful worlds and tell stories rooted in personal experience.</p>
+          <p>We believe games should do more than follow trends. We draw inspiration from our own lives to create emotionally resonant worlds that encourage reflection, empathy, and human connection.</p>
+          <p>We like to keep things &ldquo;to be determined.&rdquo; That curiosity shapes how we work: exploring different ideas, experimenting with how things can be made, and giving each other room to discover something unexpected.</p>
+          <p>Together, we completed a playable vertical slice of <em>To Be Seen</em>, established the game&apos;s core mechanics and visual direction, and refined the experience through iterative player testing.</p>
+        </Reveal>
+      </section>
+      <section id="team" className="team-section section-pad" aria-labelledby="team-heading">
+        <Reveal className="section-heading">
+          <h2 id="team-heading">Meet the team</h2>
+        </Reveal>
+        <TeamGallery />
+      </section>
+    </main>
+  );
 }

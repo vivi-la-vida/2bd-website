@@ -389,9 +389,9 @@ nav a.active::after {
   border-radius: 9px;
   overflow: hidden;
   position: relative;
-  aspect-ratio: 1.52;
+  aspect-ratio: 16 / 9;
   box-shadow: 0 15px 45px #59659124;
-  background: #506197;
+  background: #171c30;
   display: grid;
   place-items: center;
 }
@@ -403,10 +403,14 @@ nav a.active::after {
   color: #fff9ee;
   text-align: center;
 }
-.trailer-preview > video {
+.trailer-preview > video,
+.trailer-preview > iframe {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
+  border: 0;
   object-fit: contain;
 }
 
@@ -419,9 +423,11 @@ nav a.active::after {
 }
 .island-image {
   height: 145px;
+  width: min(100%, 145px);
+  margin-inline: auto;
+  border-radius: 50%;
   overflow: hidden;
-  border-radius: 48%;
-  mask-image: radial-gradient(ellipse, black 43%, transparent 72%);
+  mask-image: radial-gradient(circle closest-side, #000 65%, transparent 100%);
 }
 .island-image img {
   width: 100%;
@@ -448,6 +454,34 @@ nav a.active::after {
 .features p span {
   color: #8b91a9;
   font-size: 18px;
+}
+.game-page .game-story {
+  display: block;
+  padding-inline: 7%;
+}
+.game-page .game-story .story-content {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+.game-page .game-story .about-copy {
+  width: min(100%, 520px);
+  margin: 0;
+  padding-block: 160px 90px;
+  text-align: start;
+}
+.game-page .game-story .game-cloud-divider {
+  position: absolute;
+  top: -1px;
+  inset-inline: 0;
+  width: 100%;
+  height: clamp(64px, 8vw, 120px);
+  fill: #eeebf3;
+  pointer-events: none;
+  z-index: 1;
+}
+@media (max-width: 760px) {
+  .game-page .game-story .about-copy { padding-block: 120px 70px; }
 }
 .about-section {
   min-height: 630px;
@@ -808,6 +842,7 @@ footer > a:last-child {
   }
   .island-image {
     height: 120px;
+    width: min(100%, 120px);
   }
   .features p {
     font-size: 18px;
