@@ -1,5 +1,5 @@
 import Image from "next/image";
-import studioLogo from "@/public/logos/2bd-studios.png";
+import studioLogo from "@/public/logos/studio-icon.png";
 
 export function StudioLogo({ sizes = "48px" }: { sizes?: string }) {
   return (
