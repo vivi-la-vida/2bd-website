@@ -6,7 +6,9 @@
 import * as React from "react"
 import { useEffect, useRef } from "react"
 
-const MAX_DPR = 2
+const MAX_DPR = 1
+const MAX_PIXELS = 650_000
+const FRAME_INTERVAL = 1000 / 30
 
 // Found on a parameter grid; the look depends on these, so they are named.
 const PUFF_UP = 0.34 // ellipse radius above the puff centre
@@ -385,6 +387,9 @@ function __OriginkitBase_CloudSky(props: Props) {
 
         let raf = 0
         let last = performance.now()
+        let lastDraw = -Infinity
+        let inRange = false
+        const motion = window.matchMedia("(prefers-reduced-motion: reduce)")
         // Each layer keeps its OWN accumulator, wrapped on the CPU. One shared
         // clock scaled per layer would jump every time Speed changed, because the
         // scale multiplies the whole elapsed time, not just what comes next.
@@ -395,7 +400,14 @@ function __OriginkitBase_CloudSky(props: Props) {
         let leanY = 0
 
         const render = (now: number) => {
-            const dt = Math.min(0.05, (now - last) / 1000)
+            raf = 0
+            if (!inRange || document.hidden) return
+            if (!motion.matches && now - lastDraw < FRAME_INTERVAL) {
+                raf = requestAnimationFrame(render)
+                return
+            }
+            lastDraw = now
+            const dt = motion.matches ? 0 : Math.min(0.05, (now - last) / 1000)
             last = now
             const v = vRef.current
             const p = ptrRef.current
@@ -404,6 +416,7 @@ function __OriginkitBase_CloudSky(props: Props) {
             const k = 1 - Math.exp(-(v.damping as number) * 0.12 * dt)
             leanX += ((p.inside ? p.x : 0) - leanX) * k
             leanY += ((p.inside ? p.y : 0) - leanY) * k
+            if (motion.matches) { leanX = 0; leanY = 0 }
 
             // The pointer's horizontal offset ADDS to the wind, so dragging one
             // way speeds the drift and the other way reverses it.
@@ -416,8 +429,10 @@ function __OriginkitBase_CloudSky(props: Props) {
             const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR)
             const cw = sizeRef.current.w || canvas.clientWidth || 1200
             const ch = sizeRef.current.h || canvas.clientHeight || 800
-            const bw = Math.max(1, Math.round(cw * dpr))
-            const bh = Math.max(1, Math.round(ch * dpr))
+            // Soft clouds need far fewer fragments than a retina-sized canvas.
+            const scale = Math.min(dpr, Math.sqrt(MAX_PIXELS / (cw * ch)))
+            const bw = Math.max(1, Math.round(cw * scale))
+            const bh = Math.max(1, Math.round(ch * scale))
             if (canvas.width !== bw || canvas.height !== bh) {
                 canvas.width = bw
                 canvas.height = bh
@@ -446,8 +461,31 @@ function __OriginkitBase_CloudSky(props: Props) {
             gl.uniform4f(u("uGlow"), glow[0], glow[1], glow[2], glow[3])
 
             gl.drawArrays(gl.TRIANGLES, 0, 3)
-            raf = requestAnimationFrame(render)
+            canvas.dataset.ready = "true"
+            if (!motion.matches) raf = requestAnimationFrame(render)
         }
+
+        // Retain the context and cloud positions, resuming before the hero appears.
+        const syncPlayback = () => {
+            cancelAnimationFrame(raf)
+            raf = 0
+            if (inRange && !document.hidden) {
+                last = performance.now()
+                lastDraw = -Infinity
+                raf = requestAnimationFrame(render)
+            } else {
+                canvas.dataset.ready = "false"
+            }
+        }
+        const observer = new IntersectionObserver(([entry]) => {
+            inRange = entry.isIntersecting
+            syncPlayback()
+        }, { rootMargin: "240px" })
+        observer.observe(canvas)
+        const resizeObserver = new ResizeObserver(syncPlayback)
+        resizeObserver.observe(canvas)
+        document.addEventListener("visibilitychange", syncPlayback)
+        motion.addEventListener("change", syncPlayback)
 
         // The rect RATIO is zoom-invariant -- offset and size scale together --
         // so this is safe on a zoomed Framer canvas where absolute px are not.
@@ -466,12 +504,18 @@ function __OriginkitBase_CloudSky(props: Props) {
         canvas.addEventListener("pointerenter", track)
         canvas.addEventListener("pointerleave", onLeave)
 
-        raf = requestAnimationFrame(render)
-
         // Never loseContext(): getContext returns the same context per canvas, so
         // StrictMode's mount -> cleanup -> mount would reuse a force-lost one.
         return () => {
             cancelAnimationFrame(raf)
+            observer.disconnect()
+            resizeObserver.disconnect()
+            document.removeEventListener("visibilitychange", syncPlayback)
+            motion.removeEventListener("change", syncPlayback)
+            gl.deleteBuffer(buf)
+            gl.deleteProgram(prog)
+            gl.deleteShader(vs)
+            gl.deleteShader(fs)
             canvas.removeEventListener("pointermove", track)
             canvas.removeEventListener("pointerenter", track)
             canvas.removeEventListener("pointerleave", onLeave)
@@ -494,6 +538,7 @@ function __OriginkitBase_CloudSky(props: Props) {
         >
             <canvas
                 ref={canvasRef}
+                className="cloud-sky-canvas"
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", display: "block" }}
             />
         </div>
