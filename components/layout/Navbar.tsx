@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
+import TactileFace from "@/components/ui/TactileFace";
 import { chapters, site } from "@/data/site";
 import { SteamIcon, StudioLogo } from "@/components/ui/Brand";
 
@@ -71,15 +72,15 @@ export default function Navbar() {
       </Link>
       <button
         ref={toggle}
-        className="menu-button"
+        className="menu-button tactile-button"
         type="button"
         onClick={() => setMenu(!menu)}
         aria-expanded={menu}
         aria-controls="main-navigation"
         aria-label={menu ? "Close navigation" : "Open navigation"}
       >
-        {menu ? <X size={18} /> : <Menu size={18} />}
-        <span>{menu ? "Close" : "Menu"}</span>
+        <TactileFace>{menu ? <X size={18} /> : <Menu size={18} />}
+        <span>{menu ? "Close" : "Menu"}</span></TactileFace>
       </button>
       <nav
         id="main-navigation"
@@ -99,15 +100,15 @@ export default function Navbar() {
         ))}
       </nav>
       <a
-        className="header-wishlist"
+        className="header-wishlist tactile-button"
         href={site.steam}
         target="_blank"
         rel="noreferrer"
         aria-label="Wishlist on Steam (opens in a new tab)"
       >
-        <SteamIcon />
+        <TactileFace><SteamIcon />
         Wishlist on Steam
-        <ArrowUpRight size={12} />
+        <ArrowUpRight size={12} /></TactileFace>
       </a>
     </header>
   );

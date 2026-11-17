@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { members, teamBiosAreDraft } from "@/data/team";
 import TeamProfileCard from "./TeamProfileCard";
 import TeamThumbnail from "./TeamThumbnail";
+import TactileFace from "@/components/ui/TactileFace";
 
 export default function TeamGallery() {
   const [{ selected, direction, leaving }, setDeck] = useState({
@@ -125,19 +126,19 @@ export default function TeamGallery() {
           </div>
           <button
             type="button"
-            className="gallery-arrow gallery-prev"
+            className="gallery-arrow gallery-prev tactile-button"
             onClick={() => move(-1)}
             aria-label="Previous team member"
           >
-            <ArrowLeft size={18} />
+            <TactileFace><ArrowLeft size={18} /></TactileFace>
           </button>
           <button
             type="button"
-            className="gallery-arrow gallery-next"
+            className="gallery-arrow gallery-next tactile-button"
             onClick={() => move(1)}
             aria-label="Next team member"
           >
-            <ArrowRight size={18} />
+            <TactileFace><ArrowRight size={18} /></TactileFace>
           </button>
         </div>
         <div className="gallery-feature-footer">
