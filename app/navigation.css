@@ -27,6 +27,17 @@
 .site-header nav a { font-size: 16px; letter-spacing: 1.2px; }
 .site-header nav a.active { color: var(--nav-accent); }
 .site-header nav a.active::after { background: var(--nav-accent); }
+.site-header nav a.nav-ghost {
+  padding: 10px 16px;
+  border: 1px solid var(--nav-border);
+  border-radius: 5px;
+  background: transparent;
+  transition: background .2s, border-color .2s;
+}
+.site-header nav a.nav-ghost:hover,
+.site-header nav a.nav-ghost.active { background: color-mix(in srgb, var(--nav-accent) 10%, transparent); border-color: var(--nav-accent); }
+.site-header nav a.nav-ghost.active::after { display: none; }
+@media (min-width: 1201px) { .site-header nav { gap: 12px; align-items: center; } }
 .site-header .header-wishlist { font-size: 14px; letter-spacing: .7px; padding: 10px 14px; background: var(--nav-button); border-color: var(--nav-button); color: var(--nav-button-ink); transition: background .3s, color .3s; }
 .site-header .header-wishlist:hover { filter: brightness(1.08); }
 .site-header a:focus-visible, .site-header button:focus-visible { outline-color: var(--nav-accent); }

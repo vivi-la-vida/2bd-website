@@ -90,7 +90,7 @@ export default function Navbar() {
           <Link
             key={chapter}
             href={chapter === "Home" ? "/" : `/${chapter.toLowerCase()}`}
-            className={current === chapter ? "active" : ""}
+            className={`${chapter !== "Home" ? "nav-ghost" : ""}${current === chapter ? " active" : ""}`}
             aria-current={current === chapter ? "page" : undefined}
             onClick={() => setMenu(false)}
           >
