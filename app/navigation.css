@@ -23,30 +23,36 @@
   --nav-border: #e6dff570;
 }
 .site-header .studio-logo { width: 68px; height: 68px; }
-.site-header nav { gap: 28px; }
-.site-header nav a { font-size: 16px; letter-spacing: 1.2px; }
-.site-header nav a.active { color: var(--nav-accent); }
-.site-header nav a.active::after { background: var(--nav-accent); }
-.site-header nav a.nav-ghost {
-  padding: 10px 16px;
-  border: 1px solid var(--nav-border);
-  border-radius: 5px;
-  background: transparent;
-  transition: background .2s, border-color .2s;
+.site-header nav { gap: 38px; }
+.site-header nav a {
+  font-size: 16px;
+  letter-spacing: 1.4px;
+  padding: 12px 0;
+  border: 0;
+  background: none;
+  transition: color .2s ease, opacity .2s ease, transform .2s ease;
 }
-.site-header nav a.nav-ghost:hover,
-.site-header nav a.nav-ghost.active { background: color-mix(in srgb, var(--nav-accent) 10%, transparent); border-color: var(--nav-accent); }
-.site-header nav a.nav-ghost.active::after { display: none; }
-@media (min-width: 1201px) { .site-header nav { gap: 12px; align-items: center; } }
+.site-header nav a:hover { color: var(--nav-accent); opacity: 1; transform: translateY(-2px); }
+.site-header nav a:not(.active)::after { display: none; }
+.site-header nav a.active { color: var(--nav-accent); }
+.site-header nav a.active::after {
+  display: block;
+  background: var(--nav-accent);
+  height: 1px;
+  bottom: 4px;
+}
+@media (min-width: 1201px) { .site-header nav { align-items: center; } }
 .site-header .header-wishlist { font-size: 14px; letter-spacing: .7px; padding: 10px 14px; background: var(--nav-button); border-color: var(--nav-button); color: var(--nav-button-ink); transition: background .3s, color .3s; }
 .site-header .header-wishlist:hover { filter: brightness(1.08); }
 .site-header a:focus-visible, .site-header button:focus-visible { outline-color: var(--nav-accent); }
 @media (max-width: 1200px) {
   .site-header .menu-button { font-size: 16px; border-color: var(--nav-border); }
   .site-header nav.open { background: var(--nav-background); border-color: var(--nav-border); backdrop-filter: blur(18px); }
+  .site-header nav.open { gap: 18px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .site-header, .site-header.is-scrolled, .site-header .header-wishlist { transition: none; }
+  .site-header, .site-header.is-scrolled, .site-header .header-wishlist, .site-header nav a { transition: none; }
+  .site-header nav a:hover { transform: none; }
 }
 @media (max-width: 640px) {
   .site-header .studio-logo { width: 60px; height: 60px; }

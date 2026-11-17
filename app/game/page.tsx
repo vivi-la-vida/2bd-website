@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "./story.css";
 export const metadata: Metadata = { title: "The Game" };
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
@@ -135,7 +136,7 @@ function AboutSection() {
   return (
     <section
       id="about"
-      className="about-section"
+      className="about-section game-story"
       aria-labelledby="about-heading"
     >
       <div className="about-art">
@@ -143,7 +144,7 @@ function AboutSection() {
           src={story}
           alt="Main Character and jellyfish guide in the In Between"
           fill
-          sizes="(max-width: 640px) 100vw, 65vw"
+          sizes="100vw"
         />
       </div>
       <div className="about-copy">
