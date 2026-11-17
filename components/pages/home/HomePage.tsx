@@ -4,8 +4,8 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import gameArt from "@/public/images/to-be-seen-landscape.png";
-import studioLogo from "@/public/logos/studio-transparent.png";
 import StudioHero from "./components/StudioHero";
+import FollowUs from "./components/FollowUs";
 
 
 function HomePage() {
@@ -13,10 +13,7 @@ function HomePage() {
     <main id="main-content" className="studio-homepage">
       <StudioHero />
       <section id="studio" className="home-studio section-pad" aria-labelledby="studio-heading">
-        <Reveal className="content-width home-studio-grid">
-          <div className="home-studio-logo">
-            <Image src={studioLogo} alt="2BD Studios" sizes="(max-width: 760px) 65vw, 360px" />
-          </div>
+        <Reveal className="content-width home-studio-content">
           <div className="home-section-copy home-studio-copy">
             <h2 id="studio-heading">Welcome!</h2>
             <p className="home-studio-introduction">We are 2BD Studios.</p>
@@ -39,6 +36,7 @@ function HomePage() {
           </div>
         </Reveal>
       </section>
+      <FollowUs />
     </main>
   );
 }
