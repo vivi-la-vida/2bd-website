@@ -9,6 +9,7 @@ export const site = {
       label: "LinkedIn",
       href: "https://www.linkedin.com/company/2bd-studios/",
     },
+    { label: "YouTube", href: "https://www.youtube.com/@2BDStudios" },
   ],
 };
 export const chapters = ["Home", "Game", "About", "Contact"] as const;
