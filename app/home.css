@@ -93,7 +93,7 @@
   gap: 24px;
   white-space: nowrap;
 }
-.studio-scroll-line { height: 56px; width: 1px; background: #29365470; }
+.studio-scroll-line { height: 35px; width: 1px; background: linear-gradient(#364d7526, transparent); }
 .home-studio, .home-game { background: var(--home-sky); color: var(--home-ink); }
 .home-studio-content {
   max-width: 780px;
