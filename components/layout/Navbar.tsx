@@ -11,6 +11,8 @@ export default function Navbar() {
   const [pastHero, setPastHero] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [menu, setMenu] = useState(false);
+  const [surface, setSurface] = useState("light");
+  const header = useRef<HTMLElement>(null);
   const toggle = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     let frame = 0;
@@ -18,6 +20,16 @@ export default function Navbar() {
       setScrolled(window.scrollY > 24);
       const hero = document.getElementById("home");
       setPastHero(!hero || hero.getBoundingClientRect().bottom <= 128);
+      const sampleY = (header.current?.offsetHeight ?? 84) / 2;
+      let nextSurface = "light";
+      for (const section of document.querySelectorAll("main section, .footer-wrap")) {
+        const bounds = section.getBoundingClientRect();
+        if (bounds.top > sampleY || bounds.bottom <= sampleY) continue;
+        if (section.matches(".home-game") && bounds.bottom - sampleY > 150) nextSurface = "dusk";
+        else if (section.matches(".hero")) nextSurface = "blue";
+        else if (section.matches(".contact-section") || (section.matches(".footer-wrap") && pathname !== "/")) nextSurface = "midnight";
+      }
+      setSurface(nextSurface);
     };
     const schedule = () => {
       cancelAnimationFrame(frame);
@@ -38,6 +50,8 @@ export default function Navbar() {
   const hidden = pathname === "/" && !pastHero;
   return (
     <header
+      ref={header}
+      data-surface={surface}
       className={`site-header${scrolled || menu || pathname !== "/" ? " is-scrolled" : ""}${hidden ? " is-hidden" : ""}`}
       inert={hidden}
       aria-hidden={hidden}
@@ -53,7 +67,7 @@ export default function Navbar() {
         aria-label="2BD Studios home"
         onClick={() => setMenu(false)}
       >
-        <StudioLogo sizes="(max-width: 640px) 84px, 96px" />
+        <StudioLogo sizes="(max-width: 640px) 60px, 68px" />
       </Link>
       <button
         ref={toggle}
@@ -76,7 +90,7 @@ export default function Navbar() {
           <Link
             key={chapter}
             href={chapter === "Home" ? "/" : `/${chapter.toLowerCase()}`}
-            className={current === chapter ? "active" : ""}
+            className={`${chapter !== "Home" ? "nav-ghost" : ""}${current === chapter ? " active" : ""}`}
             aria-current={current === chapter ? "page" : undefined}
             onClick={() => setMenu(false)}
           >
