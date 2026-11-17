@@ -117,7 +117,7 @@ export default function TeamGallery() {
                 />
                 <figcaption>
                   <strong>{person.name}</strong>
-                  <span>{person.role}</span>
+                  {/* <span>{person.role}</span> */}
                 </figcaption>
               </motion.figure>
               );
