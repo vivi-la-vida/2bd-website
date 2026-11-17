@@ -25,7 +25,7 @@ export default function Navbar() {
       for (const section of document.querySelectorAll("main section, .footer-wrap")) {
         const bounds = section.getBoundingClientRect();
         if (bounds.top > sampleY || bounds.bottom <= sampleY) continue;
-        if (section.matches(".home-game") && bounds.bottom - sampleY > 150) nextSurface = "dusk";
+        if (section.matches(".game-story") || (section.matches(".home-game") && bounds.bottom - sampleY > 150)) nextSurface = "dusk";
         else if (section.matches(".hero")) nextSurface = "blue";
         else if (section.matches(".contact-section") || (section.matches(".footer-wrap") && pathname !== "/")) nextSurface = "midnight";
       }
@@ -90,7 +90,7 @@ export default function Navbar() {
           <Link
             key={chapter}
             href={chapter === "Home" ? "/" : `/${chapter.toLowerCase()}`}
-            className={`${chapter !== "Home" ? "nav-ghost" : ""}${current === chapter ? " active" : ""}`}
+            className={current === chapter ? "active" : ""}
             aria-current={current === chapter ? "page" : undefined}
             onClick={() => setMenu(false)}
           >
