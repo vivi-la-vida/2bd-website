@@ -7,22 +7,28 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { members, teamBiosAreDraft } from "@/data/team";
 import TeamProfileCard from "./TeamProfileCard";
 import TeamThumbnail from "./TeamThumbnail";
+import TactileFace from "@/components/ui/TactileFace";
 
 export default function TeamGallery() {
-  const [selected, setSelected] = useState(0);
-  const [direction, setDirection] = useState(1);
+  const [{ selected, direction, leaving }, setDeck] = useState({
+    selected: 0, direction: 1, leaving: -1,
+  });
   const reduced = useReducedMotion();
   const touch = useRef<{ x: number; y: number } | null>(null);
   const member = members[selected];
   const select = (index: number, step: number) => {
-    setDirection(step);
-    setSelected((index + members.length) % members.length);
+    setDeck((current) => {
+      const next = (index + members.length) % members.length;
+      return next === current.selected ? current : {
+        selected: next, direction: step, leaving: current.selected,
+      };
+    });
   };
   const move = (step: number) => {
-    setDirection(step);
-    setSelected(
-      (current) => (current + step + members.length) % members.length,
-    );
+    setDeck((current) => ({
+      selected: (current.selected + step + members.length) % members.length,
+      direction: step, leaving: current.selected,
+    }));
   };
   const transition = {
     initial: { opacity: reduced ? 1 : 0.2, x: reduced ? 0 : direction * 8 },
@@ -71,44 +77,68 @@ export default function TeamGallery() {
             touch.current = null;
           }}
         >
-          <div className="gallery-portrait-stack">
-            <AnimatePresence initial={false} mode="wait">
+          <div className="gallery-portrait-stack gallery-shuffle-stack">
+            {members.map((person, index) => {
+              const active = index === selected;
+              const outgoing = index === leaving;
+              return (
               <motion.figure
-                key={member.id}
+                key={person.id}
                 className="gallery-portrait"
-                {...transition}
+                aria-hidden={!active}
+                initial={false}
+                animate={reduced ? {
+                  opacity: active ? 1 : 0, x: "0%", y: 0, rotate: 0, scale: 1, zIndex: active ? 3 : 0,
+                } : outgoing ? {
+                  x: [null, `${direction * 55}%`, "0%"],
+                  y: [null, -12, 8], rotate: [null, direction * 10, -5],
+                  scale: [null, 1.01, .94], zIndex: [4, 4, 0], opacity: 1,
+                } : {
+                  x: "0%", y: active ? 0 : 8, rotate: active ? 0 : -5,
+                  scale: active ? 1 : .94, zIndex: active ? 3 : 0,
+                  opacity: active ? 1 : 0,
+                }}
+                transition={reduced ? { duration: .15 } : outgoing ? {
+                  duration: .5, times: [0, .45, 1], ease: "easeInOut",
+                  opacity: { duration: 0 },
+                } : {
+                  duration: .3, ease: "easeOut",
+                  opacity: { duration: 0 }, zIndex: { duration: 0 },
+                }}
               >
                 <Image
-                  src={member.photo}
-                  style={{ objectPosition: member.photoPosition }}
-                  alt={`Portrait of ${member.name}`}
+                  src={person.photo}
+                  style={{ objectPosition: person.photoPosition }}
+                  alt={active ? `Portrait of ${person.name}` : ""}
                   width={720}
                   height={850}
                   sizes="(max-width: 640px) 280px, (max-width: 1000px) 35vw, 410px"
                   draggable={false}
+                  loading="eager"
                 />
                 <figcaption>
-                  <strong>{member.name}</strong>
-                  <span>{member.role}</span>
+                  <strong>{person.name}</strong>
+                  {/* <span>{person.role}</span> */}
                 </figcaption>
               </motion.figure>
-            </AnimatePresence>
+              );
+            })}
           </div>
           <button
             type="button"
-            className="gallery-arrow gallery-prev"
+            className="gallery-arrow gallery-prev tactile-button"
             onClick={() => move(-1)}
             aria-label="Previous team member"
           >
-            <ArrowLeft size={18} />
+            <TactileFace><ArrowLeft size={18} /></TactileFace>
           </button>
           <button
             type="button"
-            className="gallery-arrow gallery-next"
+            className="gallery-arrow gallery-next tactile-button"
             onClick={() => move(1)}
             aria-label="Next team member"
           >
-            <ArrowRight size={18} />
+            <TactileFace><ArrowRight size={18} /></TactileFace>
           </button>
         </div>
         <div className="gallery-feature-footer">

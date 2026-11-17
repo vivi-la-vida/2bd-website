@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import TactileFace from "@/components/ui/TactileFace";
 export default function ContactForm() {
   const [previewed, setPreviewed] = useState(false);
   return (
@@ -55,10 +56,10 @@ export default function ContactForm() {
             ? "Preview complete. No message has been sent or saved."
             : "Demo form · Messages are not sent yet."}
         </span>
-        <button className="button lavender" type="submit">
+        <button className="button lavender tactile-button" type="submit"><TactileFace>
           {previewed ? "Preview again" : "Send a little hello"}
           <ArrowUpRight size={14} />
-        </button>
+        </TactileFace></button>
       </div>
     </form>
   );

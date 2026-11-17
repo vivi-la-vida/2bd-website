@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import TeamGallery from "@/app/about/_components/TeamGallery";
 import Reveal from "@/components/ui/Reveal";
+import StudioSky from "@/components/ui/StudioSky";
 import "./about.css";
 
 export const metadata: Metadata = { title: "About" };
@@ -9,6 +10,7 @@ export default function AboutPage() {
   return (
     <main id="main-content" className="dedicated-page about-page">
       <section className="studio-introduction section-pad" aria-labelledby="studio-heading">
+        <div className="studio-introduction-sky" aria-hidden="true"><StudioSky framed /></div>
         <Reveal className="studio-introduction-copy content-width">
           <h1 id="studio-heading">About the Studio</h1>
           <p className="studio-belief"><strong>We create games that make players feel something.</strong></p>

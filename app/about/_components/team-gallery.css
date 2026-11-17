@@ -10,6 +10,7 @@
 }
 .gallery-portrait-stage {
   position: relative;
+  overflow: clip;
   padding: 12px 30px;
   touch-action: pan-y;
   outline-offset: 8px;
@@ -21,6 +22,15 @@
 .gallery-portrait-stack {
   position: relative;
   isolation: isolate;
+}
+.gallery-shuffle-stack {
+  display: grid;
+}
+.gallery-shuffle-stack > .gallery-portrait {
+  grid-area: 1 / 1;
+  min-width: 0;
+  pointer-events: none;
+  background: linear-gradient(150deg, #f7f6fa, #dad8ed);
 }
 .gallery-portrait-stack::before,
 .gallery-portrait-stack::after {
@@ -238,20 +248,24 @@
   position: relative;
   min-width: 0;
   border: 2px solid transparent;
-  border-radius: 8px;
-  padding: 3px;
-  background: #d7d9e680;
+  border-radius: 3px;
+  padding: 0;
+  background: transparent;
   transition:
     border-color 250ms,
     box-shadow 250ms,
     transform 250ms,
     background 250ms;
 }
+.gallery-profile-stamp {
+  width: 100%;
+  filter: drop-shadow(0 2px 2px #51477524);
+}
 .gallery-thumbnail img {
   width: 100%;
   aspect-ratio: 0.85;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 2px;
   filter: saturate(0.35);
   opacity: 0.7;
   transition:
@@ -265,21 +279,31 @@
   overflow: hidden;
   clip-path: inset(50%);
 }
-.gallery-thumbnail:hover {
-  transform: translateY(-3px);
+@media (hover: hover) {
+  .gallery-thumbnail:hover { transform: translateY(-3px); }
+  .gallery-thumbnail:hover img { opacity: 1; filter: saturate(0.85); }
 }
 .gallery-thumbnail.selected {
   border-color: #a89acb;
-  background: #eee7fb;
+  background: transparent;
   box-shadow:
     0 0 0 3px #c7b5eb24,
     0 0 18px #bfa6e640;
   transform: translateY(-3px);
 }
-.gallery-thumbnail.selected img,
-.gallery-thumbnail:hover img {
+.gallery-thumbnail.selected img {
   opacity: 1;
   filter: saturate(0.85);
+}
+.gallery-thumbnail:focus-visible {
+  outline: 2px solid #635b91;
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gallery-thumbnail,
+  .gallery-thumbnail:hover,
+  .gallery-thumbnail.selected { transform: none; transition: opacity 150ms ease-out; }
+  .gallery-thumbnail img { transition: opacity 150ms ease-out; }
 }
 .gallery-placeholder-note {
   color: #9697ad;
