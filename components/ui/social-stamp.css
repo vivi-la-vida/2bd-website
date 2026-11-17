@@ -1,0 +1,10 @@
+.social-stamp-link { display: block; flex: 0 0 70px; width: 70px; border-radius: 3px; transition: transform .25s ease; }
+.social-stamp-link:nth-child(1) { transform: rotate(-5deg); }
+.social-stamp-link:nth-child(2) { transform: translateY(4px) rotate(3deg); }
+.social-stamp-link:nth-child(3) { transform: rotate(-2deg); }
+.social-stamp-link:hover, .social-stamp-link:focus-visible { transform: translateY(-5px) rotate(0); }
+.social-stamp-link:focus-visible { outline: 3px solid #635b91; outline-offset: 6px; }
+.social-stamp-stamp { width: 100%; }
+.social-stamp-face { height: 100%; display: grid; place-items: center; padding: 3px; border: 1px solid #51477544; }
+.social-stamp-face svg { display: block; width: 100%; height: auto; }
+@media (prefers-reduced-motion: reduce) { .social-stamp-link { transition: none; } }
