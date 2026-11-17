@@ -22,11 +22,6 @@
   background: linear-gradient(to bottom, transparent, var(--home-sky));
 }
 .studio-sky { position: absolute; inset: 0; z-index: -1; }
-.cloud-sky-canvas {
-  opacity: 0;
-  transition: opacity 300ms cubic-bezier(0.2, 0, 0, 1);
-}
-.cloud-sky-canvas[data-ready="true"] { opacity: 1; }
 .studio-hero.logo-complete .studio-hero-mark {
   animation: studio-logo-fade 300ms ease-out both;
 }

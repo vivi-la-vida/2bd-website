@@ -500,9 +500,11 @@ function __OriginkitBase_CloudSky(props: Props) {
             ptrRef.current.inside = false
         }
 
-        canvas.addEventListener("pointermove", track)
-        canvas.addEventListener("pointerenter", track)
-        canvas.addEventListener("pointerleave", onLeave)
+        // Track across the section even where its text or sky mask covers the canvas.
+        const pointerSurface = canvas.closest("section") || canvas
+        pointerSurface.addEventListener("pointermove", track as EventListener)
+        pointerSurface.addEventListener("pointerenter", track as EventListener)
+        pointerSurface.addEventListener("pointerleave", onLeave)
 
         // Never loseContext(): getContext returns the same context per canvas, so
         // StrictMode's mount -> cleanup -> mount would reuse a force-lost one.
@@ -516,9 +518,9 @@ function __OriginkitBase_CloudSky(props: Props) {
             gl.deleteProgram(prog)
             gl.deleteShader(vs)
             gl.deleteShader(fs)
-            canvas.removeEventListener("pointermove", track)
-            canvas.removeEventListener("pointerenter", track)
-            canvas.removeEventListener("pointerleave", onLeave)
+            pointerSurface.removeEventListener("pointermove", track as EventListener)
+            pointerSurface.removeEventListener("pointerenter", track as EventListener)
+            pointerSurface.removeEventListener("pointerleave", onLeave)
         }
     }, [])
 
