@@ -88,9 +88,6 @@ export default function TeamGallery() {
                   draggable={false}
                 />
                 <figcaption>
-                  <span className="portrait-caption-label">
-                    THE PEOPLE OF 2BD
-                  </span>
                   <strong>{member.name}</strong>
                   <span>{member.role}</span>
                 </figcaption>
@@ -119,7 +116,6 @@ export default function TeamGallery() {
             {String(selected + 1).padStart(2, "0")}{" "}
             <span>/ {String(members.length).padStart(2, "0")}</span>
           </span>
-          <span>A FEW DIFFERENT PERSPECTIVES</span>
           <span className="gallery-watermark" aria-hidden="true">
             ✧
           </span>
@@ -127,9 +123,6 @@ export default function TeamGallery() {
       </div>
       <div className="gallery-information">
         <div className="gallery-bio-panel">
-          <span className="eyebrow gallery-chapter">
-            ONE SHARED ADVENTURE · MEET THE TEAM
-          </span>
           <AnimatePresence initial={false} mode="wait">
             <motion.div key={member.id} {...transition}>
               <TeamProfileCard member={member} />
@@ -138,7 +131,6 @@ export default function TeamGallery() {
         </div>
         <div className="gallery-selection">
           <div className="gallery-selection-heading">
-            <span>FIND A FAMILIAR FACE</span>
             <span>SELECT TO EXPLORE</span>
           </div>
           <div
