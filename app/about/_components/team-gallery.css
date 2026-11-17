@@ -10,6 +10,7 @@
 }
 .gallery-portrait-stage {
   position: relative;
+  overflow: clip;
   padding: 12px 30px;
   touch-action: pan-y;
   outline-offset: 8px;
@@ -21,6 +22,15 @@
 .gallery-portrait-stack {
   position: relative;
   isolation: isolate;
+}
+.gallery-shuffle-stack {
+  display: grid;
+}
+.gallery-shuffle-stack > .gallery-portrait {
+  grid-area: 1 / 1;
+  min-width: 0;
+  pointer-events: none;
+  background: linear-gradient(150deg, #f7f6fa, #dad8ed);
 }
 .gallery-portrait-stack::before,
 .gallery-portrait-stack::after {
