@@ -1,69 +1,58 @@
-# To Be Seen — 2BD Studios
+# 2BD Studios
 
-A faithful Next.js conversion of the supplied Figma/Vite prototype, retaining its painterly world, original copy, palette, and interactive nine-person gallery, with the supplied official hero artwork and transparent game/studio logos.
+The official website for **2BD Studios**, an independent game studio creating thoughtful, emotionally resonant games inspired by personal experience.
 
-## Run locally
+**Visit the website: [2bdstudios.com](https://2bdstudios.com)**
 
-Requires Node.js 20.9 or newer and npm.
+## About the studio
+
+2BD Studios began as a nine-person team in Duke University's Game Design, Development, and Innovation program. We believe games should do more than follow trends: they can encourage reflection, empathy, and human connection.
+
+Our name leaves room for things to be determined. We explore different ideas, experiment with how games can be made, and build worlds that make players feel something.
+
+## Purpose and goals
+
+This website introduces the studio, shares the world of our game, and connects players with the people behind it. It gives visitors a place to learn about our work, watch the trailer, meet the team, follow development, and get in touch.
+
+Our goal is to turn curiosity into a lasting connection with the studio and its games. The site's painterly artwork, lavender palette, handwritten headings, and playful stationery details reflect the warmth and personality of the worlds we create.
+
+## About To Be Seen
+
+**To Be Seen** is a cozy, narrative-driven puzzle game about family, memory, and reconnection. Caught between life and death, a wandering spirit must understand the family they've grown distant from to find a way back to life.
+
+Players explore the In-Between, step into family members' lives, relive their memories, and uncover the joys, regrets, and misunderstandings that shape how they see one another.
+
+[Wishlist To Be Seen on Steam](https://store.steampowered.com/app/4883480/To_Be_Seen/)
+
+## Explore the website
+
+- **[Home](https://2bdstudios.com):** An introduction to the studio, our game, and where to follow our work.
+- **[Game](https://2bdstudios.com/game):** The story, gameplay features, trailer, and Steam wishlist link for To Be Seen.
+- **[About](https://2bdstudios.com/about):** Our origins and beliefs, plus an interactive gallery of the nine-person team.
+- **[Contact](https://2bdstudios.com/contact):** A letter-inspired contact form and links to our social channels. The form opens a draft addressed to the studio in the visitor's email app; the visitor reviews and sends it there.
+
+## Development
+
+Built with Next.js, React, TypeScript, Tailwind CSS, and Motion. Mansalva headings and Fredoka body text are bundled locally. Shared visual tokens, typography, responsive rules, and tactile button styles live in `app/design-system.css`.
+
+To run locally:
 
 ```sh
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000. For production, run `npm run build` followed by `npm start`. `npx tsc --noEmit` checks types; `npm run lint` runs ESLint.
+Open [localhost:3000](http://localhost:3000). To check and build the site:
 
-The app uses the installed Next.js 16 App Router, React 19, TypeScript, Tailwind CSS 4, Motion for React, Lucide React, and `next/image`. Read the bundled `node_modules/next/dist/docs/` before making framework changes. Keep the repository's Tailwind Turbopack configuration in `next.config.ts`.
-
-This Windows environment required the documented `experimental.turbopackPluginRuntimeStrategy: "workerThreads"` setting: the default CSS-loader child process exited before its socket connection, while worker threads compiled successfully. Keep this setting on Node.js 22.18.0; consult the bundled guide's compatibility notes before changing Node versions.
-
-## Organization
-
-```text
-app/                   Root layout, route entry points, shared styles
-  page.tsx             Home page implementation
-  _components/         Home hero and Follow Us components
-  home.css             Homepage styles
-  about/page.tsx       About page implementation
-  about/_components/   Team gallery and its styles
-  game/page.tsx        Game page implementation
-  game/_components/    Atmosphere, story, and trailer components
-  team/page.tsx        Legacy redirect to About
-  contact/page.tsx     Contact page implementation
-  contact/_components/ Contact form
-components/
-  layout/              Shared fixed navigation and footer
-  ui/                  Buttons, headings, brand marks, reveal/motion helpers
-data/                  Team roster, game features, studio links
-types/                 TeamMember interface
-public/images/         Original prototype illustrations
+```sh
+npm run lint
+npx tsc --noEmit
+npm run build
+npm start
 ```
 
-The four page implementations live directly in `app/page.tsx`, `app/about/page.tsx`, `app/game/page.tsx`, and `app/contact/page.tsx`, alongside their route metadata. Page-specific components are colocated in each route’s private `_components/` folder. Shared UI, layout, and Originkit components remain under `components/`. Home stays at `/`, and the legacy `/team` route redirects to `/about`. Navigation links between pages and hides over the home hero.
+Page implementations live in `app/`, shared components in `components/`, and studio links, team information, and game features in `data/`. Images and logos live in `public/`. Follow `AGENTS.md` and the installed Next.js documentation when making framework changes.
 
-Static sections remain Server Components. Browser behavior is confined to navigation, gallery, story expansion, form preview, and animation helpers. Images use responsive `next/image` sizes; the hero is preloaded. The original font families are bundled from Fontsource packages and self-hosted with `next/font/local`; builds and visitors do not need Google Fonts access. Font licenses are included with those packages.
+## Contact
 
-## Update content
-
-- **Team:** Edit `data/team.ts`. The roster follows the supplied CSV order and contains the approved names, roles, LinkedIn links, and matching headshots in `public/images/team/`. `portfolio` is optional: Skylar’s CSV entry has none, so that button is hidden. Put replacement portraits in the same folder and update `photo`; use `photoPosition` to keep the face framed consistently in the featured card and thumbnails. Existing biography wording remains temporary, with names and neutral pronouns updated; replace it with approved bios and set `teamBiosAreDraft` to `false` when ready. The count and thumbnails follow the data automatically.
-- **Game:** Edit `data/game.ts` for the four feature cards. Game page copy is in `app/game/page.tsx`.
-- **Studio links:** Edit `email`, `steam`, and `socials` in `data/site.ts`. The current approved destinations are the To Be Seen Steam page, 2BD Studios Instagram and LinkedIn, and `twobdstudios@gmail.com`. Discord and YouTube are omitted. `linksAreSamples` is `false`, so the old prototype contact notice is hidden.
-- **Illustrations:** Replace images in `public/images/`, preserving filenames or updating imports. Keep meaningful alternative text for content images. Official transparent brand marks are in `public/logos/`.
-- **Typography and icons:** Primary interface text uses the reduced readability scale: a minimum of 18px, a 21.6px base, and regular-weight labels/buttons. Secondary hero credits, biography notices, and footer copyright use a subdued 12px caption size. The navigation studio logo is 96px on desktop and 84px on mobile. `app/favicon.ico` includes 16–256px studio-logo sizes, and `app/icon.png` supplies a transparent 512px browser icon. Both are generated from the official studio logo.
-- **Styling:** Shared colors and font variables are in the Tailwind `@theme` block in `app/globals.css`. Gallery styling is in `app/about/_components/team-gallery.css`. Original visual rules were retained; obsolete prototype carousel rules were removed.
-
-## Interactions and accessibility
-
-The gallery supports thumbnails, wrapping previous/next arrows, left/right keys, Home/End keys, and horizontal touch swipes. It announces selection changes. The trailer frame displays “Coming Soon” without a play button. To add the official trailer later, pass `videoSrc` and optionally `poster` to `TrailerPreview`; it renders a native video player in the same frame. Animations and smooth scrolling respect reduced motion. A skip link and semantic section headings support keyboard and screen-reader navigation.
-
-## Content still awaiting studio approval
-
-The nine team names, roles, professional links, and headshots now come from the supplied team CSV and headshot folder. Biography paragraphs remain explicitly labeled draft copy at the owner’s request; they are not verified personal biographies. The studio email, Steam page, Instagram, and LinkedIn use the supplied official destinations. No real trailer video was supplied, so the existing trailer frame displays “Coming Soon.” The contact form validates input and demonstrates the original interaction, but it does not send or store messages; its status says so before and after submission. Connecting delivery requires an approved email destination and service, server-side validation, and abuse protection. Do not present the form as delivering mail until that integration exists.
-
-The GIF supplied with the request is a visual reference of the site, not a background asset: using it as the hero would duplicate embedded UI and text. The site uses the supplied official `public/images/to-be-seen-hero.png` artwork with gentle parallax. A blue CSS tint overlay improves hero text contrast; the original image file remains unchanged. The official game and studio logos are copied unchanged into `public/logos/to-be-seen.png` and `public/logos/2bd-studios.png`; both retain their transparency.
-
-## Visual review
-
-Validation completed: production build and TypeScript passed; ESLint passed. Browser checks covered 1920×1080 and 1440×900 desktop layouts, 768×1024 tablet, and 390×844 phone widths, with no horizontal overflow. Confirmed gallery thumbnail selection, wrapping in both directions, arrow-key selection, active-section highlighting, mobile menu behavior, story expansion, the centered Coming Soon trailer placeholder, required-field validation, demo submission status, and navigation from a dedicated route to a homepage section. Reduced-motion handling is implemented in CSS and Motion; an OS-level reduced-motion setting and physical-device swipe gestures were not emulated during these checks.
-
-Check at 1920×1080, 1440×900, tablet width, and a narrow phone width. Verify all section links, active navigation, the nine thumbnails, wrapping arrows, keyboard/swipe interactions, the non-interactive trailer placeholder, form validation, and reduced-motion behavior. All illustrations, team headshots, and fonts are served locally.
+Email the studio at [twobdstudios@gmail.com](mailto:twobdstudios@gmail.com), or visit [2bdstudios.com/contact](https://2bdstudios.com/contact).
