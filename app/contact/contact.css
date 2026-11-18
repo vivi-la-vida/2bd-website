@@ -80,3 +80,19 @@ html body .contact-page .form-bottom > span { color: var(--ds-muted); max-width:
   .contact-page .contact-social-stamps { gap: 10px; }
   .contact-page .contact-social-stamps a { width: 56px; }
 }
+/* Match the playful resting tilts and lift of the homepage stamps. */
+@media (prefers-reduced-motion: no-preference) {
+  .contact-page .contact-social-stamps a { transition: transform 250ms ease; }
+  .contact-page .contact-social-stamps a:nth-child(3n + 1) { transform: rotate(-5deg); }
+  .contact-page .contact-social-stamps a:nth-child(3n + 2) { transform: translateY(4px) rotate(3deg); }
+  .contact-page .contact-social-stamps a:nth-child(3n) { transform: rotate(-2deg); }
+  @media (hover: hover) {
+    .contact-page .contact-social-stamps a:hover { transform: translateY(-5px) rotate(0); }
+  }
+  .contact-page .contact-social-stamps a:focus-visible { transform: translateY(-5px) rotate(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-page .contact-social-stamps a,
+  .contact-page .contact-social-stamps a:hover,
+  .contact-page .contact-social-stamps a:focus-visible { transform: none; transition: none; }
+}
