@@ -152,7 +152,6 @@ function AboutSection() {
       </div>
       <div className="content-width story-content">
       <div className="about-copy">
-        <span className="eyebrow">A STORY OF RECONNECTION</span>
         <h2 id="about-heading">
           A family apart.
           <br />

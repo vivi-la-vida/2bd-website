@@ -18,7 +18,7 @@
   --ds-content: 1200px;
   --ds-reading: 720px;
   --ds-h1: 64px;
-  --ds-h2: 44px;
+  --ds-h2: 48px;
   --ds-h3: 32px;
   --ds-lead: 22px;
   --ds-body: 17px;
@@ -149,7 +149,7 @@ html body :is(.studio-scroll, .scroll-cue) { font-size: 14px; line-height: 1.45;
   html body .game-copy { max-width: var(--ds-reading); }
 }
 @media (max-width: 767px) {
-  :root { --ds-gutter: 24px; --ds-h1: 40px; --ds-h2: 32px; --ds-h3: 26px; --ds-lead: 19px; --ds-body: 16px; }
+  :root { --ds-gutter: 24px; --ds-h1: 48px; --ds-h2: 38px; --ds-h3: 26px; --ds-lead: 19px; --ds-body: 16px; }
   html body .section-pad { padding-block: 48px; }
   html body .studio-introduction { padding-top: 144px; }
   html body .features, html body .contact-grid, html body .team-gallery { grid-template-columns: minmax(0, 1fr); gap: 32px; }
@@ -306,3 +306,5 @@ html body .gallery-socials .tactile-button > .tactile-face { padding-inline: 16p
 @media (max-width: 640px) { html body .site-header .header-wishlist.tactile-button { display: none; } }
 html body .tactile-button:not(:disabled):not([aria-disabled="true"]):active { scale: 1; transform: none; }
 html body .tactile-button:not(:disabled):not([aria-disabled="true"]):hover { filter: none; box-shadow: none; }
+/* Quiet labels let the expressive section headings lead. */
+html body main .eyebrow { font-weight: 400; }

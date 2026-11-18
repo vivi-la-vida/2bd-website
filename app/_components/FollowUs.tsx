@@ -1,12 +1,14 @@
 import { site } from "@/data/site";
 import SocialStamp from "@/components/ui/SocialStamp";
-import type { SocialPlatform } from "@/components/ui/SocialDoodle";
+import type { DoodleIcon } from "@/components/ui/SocialDoodle";
 import Reveal from "@/components/ui/Reveal";
+import { Sparkles } from "lucide-react";
 
-const stamps: Array<{ platform: SocialPlatform; tint: string }> = [
-  { platform: "LinkedIn", tint: "#dce3f1" },
-  { platform: "Instagram", tint: "#eeddea" },
-  { platform: "YouTube", tint: "#e1dcf1" },
+const stamps: Array<{ platform: DoodleIcon; tint: string }> = [
+  { platform: "Instagram", tint: "#e5e8f5" },
+  { platform: "LinkedIn", tint: "#e5e8f5" },
+  { platform: "YouTube", tint: "#e5e8f5" },
+  { platform: "Steam", tint: "#e5e8f5" },
 ];
 
 export default function FollowUs() {
@@ -14,17 +16,19 @@ export default function FollowUs() {
     <section id="follow-us" className="home-follow section-pad" aria-labelledby="follow-heading">
       <Reveal className="content-width home-postcard-position">
         <div className="home-postcard">
-          <svg className="postcard-paperclip" viewBox="0 0 110 60" fill="none" aria-hidden="true">
-            <path d="M90 14 32 43C10 54 0 29 20 19L77 2c18-5 28 17 11 25L36 50C13 61 1 32 20 23L71 7" stroke="#a8a5a6" strokeWidth="5" strokeLinecap="round" />
-            <path d="M90 13 32 42C10 53 0 28 20 18L77 1c18-5 28 17 11 25L36 49C13 60 1 31 20 22L71 6" stroke="#f6f4f0" strokeWidth="2" strokeLinecap="round" />
-          </svg>
+          <div className="follow-postmark" aria-hidden="true">
+            <svg viewBox="0 0 100 40" fill="none"><path d="M0 9Q10 1 20 9T40 9T60 9M0 20Q10 12 20 20T40 20T60 20M0 31Q10 23 20 31T40 31T60 31" /><circle cx="80" cy="20" r="18" /></svg>
+            <Sparkles size={18} />
+          </div>
         <div className="home-follow-heading">
-          <h2 id="follow-heading">Follow <em>us.</em></h2>
+          <h2 id="follow-heading">Follow us</h2>
+          <p>Check out our socials</p>
+          <p>Follow the making of <em>To Be Seen</em> from artwork, development updates, and silly moments.</p>
         </div>
         <div className="home-social-stamps" aria-label="Studio social links">
           {stamps.map(({ platform, tint }) => {
-            const social = site.socials.find(({ label }) => label === platform);
-            return social ? <SocialStamp key={platform} platform={platform} href={social.href} tint={tint} /> : null;
+            const href = platform === "Steam" ? site.steam : site.socials.find(({ label }) => label === platform)?.href;
+            return href ? <SocialStamp key={platform} platform={platform} href={href} tint={tint} /> : null;
           })}
         </div>
         </div>
