@@ -39,6 +39,10 @@ export default function ContactForm() {
           />
         </label>
       </div>
+      <label htmlFor="contact-subject">
+        Subject
+        <input id="contact-subject" name="subject" placeholder="What's this about?" maxLength={160} required />
+      </label>
       <label htmlFor="contact-message">
         Your message
         <textarea
@@ -57,7 +61,7 @@ export default function ContactForm() {
             : "Demo form · Messages are not sent yet."}
         </span>
         <button className="button lavender tactile-button" type="submit"><TactileFace>
-          {previewed ? "Preview again" : "Send a little hello"}
+          {previewed ? "Preview again" : "Preview message"}
           <ArrowUpRight size={14} />
         </TactileFace></button>
       </div>
