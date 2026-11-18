@@ -17,11 +17,11 @@
   --ds-gutter: 64px;
   --ds-content: 1200px;
   --ds-reading: 720px;
-  --ds-h1: 64px;
-  --ds-h2: 48px;
-  --ds-h3: 32px;
-  --ds-lead: 22px;
-  --ds-body: 17px;
+  --ds-h1: 4.25rem;
+  --ds-h2: 3.25rem;
+  --ds-h3: 2.125rem;
+  --ds-lead: 1.5rem;
+  --ds-body: 1.125rem;
   --ds-button-radius: 10px;
   --ds-card-radius: 20px;
   --color-ink: var(--ds-ink);
@@ -30,7 +30,7 @@
   --font-dm-sans: var(--font-fredoka);
   --font-cormorant: var(--font-mansalva);
 }
-html { font-size: 16px; scroll-padding-block-start: 112px; }
+html { font-size: 100%; scroll-padding-block-start: 112px; }
 html body {
   font-family: var(--font-fredoka), sans-serif;
   font-size: var(--ds-body);
@@ -66,15 +66,15 @@ html body :is(.section-heading p, .studio-introduction .studio-belief, .home-stu
 }
 html body :is(.eyebrow, .feature-number, .gallery-count, .gallery-role, .gallery-selection-heading, .gallery-placeholder-note, .form-bottom > span) {
   font-family: var(--font-fredoka), sans-serif;
-  font-size: 14px;
+  font-size: .875rem;
   line-height: 1.45;
   letter-spacing: .08em;
 }
 html body .gallery-portrait figcaption strong { font-size: var(--ds-h3); line-height: 1.2; }
-html body .gallery-portrait figcaption > span:last-child { font-size: 14px; color: var(--ds-ink); }
+html body .gallery-portrait figcaption > span:last-child { font-size: .875rem; color: var(--ds-ink); }
 html body :is(.gallery-role, .gallery-selection-heading, .gallery-placeholder-note) { color: var(--ds-muted); }
 html body .gallery-biography { color: var(--ds-ink); }
-html body .gallery-socials a { font-size: 16px; }
+html body .gallery-socials a { font-size: 1rem; }
 html body .section-pad { padding: var(--ds-space-16) var(--ds-gutter); }
 html body .content-width { max-width: var(--ds-content); }
 html body :is(.studio-introduction-copy, .home-studio-content) { max-width: var(--ds-reading); }
@@ -99,7 +99,7 @@ html body :is(.button, .site-header .header-wishlist, .site-header .menu-button)
   border: 1px solid transparent;
   border-radius: var(--ds-button-radius);
   font-family: var(--font-fredoka), sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0;
@@ -114,27 +114,27 @@ html body .site-header:is([data-surface="dusk"], [data-surface="blue"], [data-su
   --nav-background: #626a98eb; --nav-menu: #626a98fa; --nav-ink: #fff; --nav-accent: #fff; --nav-button: var(--ds-soft); --nav-button-ink: var(--ds-ink);
 }
 html body .site-header { padding-inline: var(--ds-gutter); }
-html body .site-header nav a { font-size: 16px; font-weight: 500; line-height: 1.2; letter-spacing: 0; text-transform: none; min-height: 44px; display: inline-flex; align-items: center; }
+html body .site-header nav a { font-size: 1rem; font-weight: 500; line-height: 1.2; letter-spacing: 0; text-transform: none; min-height: 44px; display: inline-flex; align-items: center; }
 html body .site-header .header-wishlist { background: var(--nav-button); color: var(--nav-button-ink); }
 html body :is(a, button):focus-visible { outline: 3px solid var(--ds-action); outline-offset: 4px; }
 html body :is(.contact-section, .game-story, .home-game) :is(a, button):focus-visible { outline-color: var(--ds-soft); }
 html body :is(.button, .site-header .header-wishlist) { transform: none; box-shadow: none; }
 html body :is(.button, .site-header .menu-button):disabled { opacity: .5; cursor: not-allowed; }
 html body .button[aria-busy="true"] { cursor: progress; }
-html body :is(.email-link, .social-links) { font-size: 16px; overflow-wrap: anywhere; }
+html body :is(.email-link, .social-links) { font-size: 1rem; overflow-wrap: anywhere; }
 html body .contact-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--ds-space-16); }
 html body .contact-grid :is(p, label, .social-links, .form-bottom > span) { color: var(--ds-soft); }
-html body :is(input, textarea) { font-size: 16px; line-height: 1.55; border-radius: 10px; min-height: 48px; border-color: #aab4d6; padding: 12px 16px; }
+html body :is(input, textarea) { font-size: 1rem; line-height: 1.55; border-radius: 10px; min-height: 48px; border-color: #aab4d6; padding: 12px 16px; }
 html body :is(input, textarea)::placeholder { color: #c5cce3; opacity: 1; }
 html body :is(input, textarea):focus-visible { outline: 3px solid var(--ds-soft); outline-offset: 3px; }
 html body .form-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
 html body .form-bottom { flex-wrap: wrap; gap: 24px; }
 html body .form-bottom .button { flex-shrink: 1; }
 html body .footer-wrap { padding-inline: var(--ds-gutter); }
-html body footer, html body footer > span, html body footer > a { font-size: 14px; line-height: 1.45; letter-spacing: 0; color: inherit; }
+html body footer, html body footer > span, html body footer > a { font-size: .875rem; line-height: 1.45; letter-spacing: 0; color: inherit; }
 html body .footer-wrap { color: var(--ds-soft); }
 html body .studio-tagline { max-width: 600px; font-size: var(--ds-lead); line-height: 1.4; font-weight: 500; letter-spacing: 0; text-transform: none; }
-html body :is(.studio-scroll, .scroll-cue) { font-size: 14px; line-height: 1.45; letter-spacing: .08em; }
+html body :is(.studio-scroll, .scroll-cue) { font-size: .875rem; line-height: 1.45; letter-spacing: .08em; }
 @media (hover: hover) {
   html body :is(.button, .site-header .header-wishlist):hover { filter: brightness(1.06); transform: none; box-shadow: none; }
 }
@@ -143,13 +143,13 @@ html body :is(.studio-scroll, .scroll-cue) { font-size: 14px; line-height: 1.45;
   html body :is(.button, .site-header .header-wishlist, .site-header .menu-button):not(:disabled):not([aria-disabled="true"]):active { scale: .96; }
 }
 @media (max-width: 1023px) {
-  :root { --ds-gutter: 32px; }
+  :root { --ds-gutter: 32px; --ds-h1: 3.5rem; --ds-h2: 2.75rem; --ds-h3: 1.875rem; --ds-lead: 1.375rem; }
   html body .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   html body .game-page .game-intro { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   html body .game-copy { max-width: var(--ds-reading); }
 }
 @media (max-width: 767px) {
-  :root { --ds-gutter: 24px; --ds-h1: 48px; --ds-h2: 38px; --ds-h3: 26px; --ds-lead: 19px; --ds-body: 16px; }
+  :root { --ds-gutter: 24px; --ds-h1: 2.75rem; --ds-h2: 2.25rem; --ds-h3: 1.75rem; --ds-lead: 1.25rem; --ds-body: 1.0625rem; }
   html body .section-pad { padding-block: 48px; }
   html body .studio-introduction { padding-top: 144px; }
   html body .features, html body .contact-grid, html body .team-gallery { grid-template-columns: minmax(0, 1fr); gap: 32px; }
@@ -186,7 +186,7 @@ html body .site-header.is-scrolled:is([data-surface="dusk"], [data-surface="blue
   --nav-button-ink: var(--ds-ink);
 }
 html body:has(.studio-homepage) .footer-wrap { color: var(--ds-ink); background: var(--ds-canvas); }
-html body .gallery-selection-heading > span:last-child { color: var(--ds-muted); font-size: 14px; }
+html body .gallery-selection-heading > span:last-child { color: var(--ds-muted); font-size: .875rem; }
 html body .gallery-socials a { color: var(--ds-ink); min-height: 44px; border-radius: var(--ds-button-radius); }
 html body .features :is(.feature-number, p span) { color: var(--ds-muted); }
 html body .features p { color: var(--ds-ink); }
@@ -308,3 +308,9 @@ html body .tactile-button:not(:disabled):not([aria-disabled="true"]):active { sc
 html body .tactile-button:not(:disabled):not([aria-disabled="true"]):hover { filter: none; box-shadow: none; }
 /* Quiet labels let the expressive section headings lead. */
 html body main .eyebrow { font-weight: 400; }
+/* Text roles stay scalable even inside route-specific forms and cards. */
+html body :is(input, textarea, select) { font-size: max(1rem, var(--ds-body)); }
+html body .contact-page .form-bottom > span { font-size: .875rem; }
+html body :is(.home-follow-heading, .studio-introduction-copy, .game-copy, .gallery-bio, .letter-form-column, .letter-social-column) { min-width: 0; overflow-wrap: break-word; }
+html body .gallery-bio, html body .gallery-biography { min-height: 0; }
+html body .game-page .hero { min-height: max(600px, 40rem); }
