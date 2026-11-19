@@ -85,7 +85,6 @@ html body .studio-introduction-sky { --clear-half: min(380px, 45vw); }
 html body .home-studio .eyebrow { color: var(--ds-muted); }
 html body :is(.game-section, .team-section) { background: var(--ds-canvas); }
 html body .game-page .game-section { background: var(--ds-canvas); }
-html body .game-page .game-story .game-cloud-divider { fill: var(--ds-canvas); }
 html body .game-page .hero-content { inset-inline-start: max(var(--ds-gutter), calc((100% - var(--ds-content)) / 2)); max-width: calc(100% - 2 * var(--ds-gutter)); }
 html body .game-page .game-story { padding-inline: var(--ds-gutter); }
 html body .game-page .game-story .about-copy { width: min(100%, 600px); }
