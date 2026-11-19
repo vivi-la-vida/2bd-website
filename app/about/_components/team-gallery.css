@@ -366,6 +366,13 @@
   }
 }
 @media (max-width: 640px) {
+  .gallery-socials {
+    flex-wrap: nowrap;
+  }
+  .gallery-social-label,
+  .gallery-social-arrow {
+    display: none;
+  }
   .team-gallery {
     grid-template-columns: 1fr;
     gap: 32px;

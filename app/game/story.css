@@ -63,19 +63,14 @@
 .game-page .game-section {
   background: linear-gradient(to bottom, transparent 65%, var(--game-section-sky)), radial-gradient(ellipse at 80% 45%, #d1d6ee90, transparent 60%), var(--game-section-sky);
 }
-.game-cloud-divider {
-  position: absolute;
-  inset-inline: 0;
-  width: 100%;
-  height: clamp(64px, 8vw, 120px);
-  fill: var(--game-section-sky);
-  pointer-events: none;
-  z-index: 1;
-}
-.game-cloud-divider--top { top: -1px; }
 .game-page .trailer-preview { aspect-ratio: 16 / 9; min-width: 0; background: #171c30; }
 .game-page .trailer-preview iframe { display: block; width: 100%; height: 100%; border: 0; }
 .game-page .game-intro { grid-template-columns: minmax(0, .8fr) minmax(0, 1.3fr); }
+.game-page .features article > p {
+  max-inline-size: 32ch;
+  margin-inline: auto;
+  text-wrap: pretty;
+}
 .game-page .about-copy { margin-inline-start: max(7%, calc((100% - 1130px) / 2)); margin-inline-end: 7%; }
 @media (max-width: 760px) {
   .game-page .game-intro { grid-template-columns: minmax(0, 1fr); }

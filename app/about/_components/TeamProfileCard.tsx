@@ -26,8 +26,8 @@ export default function TeamProfileCard({ member }: { member: TeamMember }) {
           >
             <path d="M5 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM3.5 9h3v12h-3V9Zm6 0h3v1.6c.7-1.2 1.9-1.9 3.4-1.9 3.2 0 4.6 2 4.6 5.4V21h-3v-6.4c0-1.8-.6-3-2.3-3s-2.7 1.2-2.7 3V21h-3V9Z" />
           </svg>
-          LinkedIn
-          <ArrowUpRight size={12} /></TactileFace>
+          <span className="gallery-social-label">LinkedIn</span>
+          <ArrowUpRight className="gallery-social-arrow" size={12} /></TactileFace>
         </a>
         {member.portfolio && (
           <a
@@ -38,8 +38,8 @@ export default function TeamProfileCard({ member }: { member: TeamMember }) {
             aria-label={`${member.name}'s portfolio${qualifier}`}
           >
             <TactileFace><ExternalLink size={16} />
-            Portfolio
-            <ArrowUpRight size={12} /></TactileFace>
+            <span className="gallery-social-label">Portfolio</span>
+            <ArrowUpRight className="gallery-social-arrow" size={12} /></TactileFace>
           </a>
         )}
       </div>

@@ -416,7 +416,7 @@ nav a.active::after {
 
 .features {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 28px;
   margin-top: 84px;
   text-align: center;
@@ -470,13 +470,13 @@ nav a.active::after {
   padding-block: 160px 90px;
   text-align: start;
 }
-.game-page .game-story .game-cloud-divider {
+.cloud-divider {
   position: absolute;
   top: -1px;
   inset-inline: 0;
   width: 100%;
   height: clamp(64px, 8vw, 120px);
-  fill: #eeebf3;
+  fill: var(--ds-canvas);
   pointer-events: none;
   z-index: 1;
 }

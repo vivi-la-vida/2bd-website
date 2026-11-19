@@ -39,6 +39,7 @@
   }
 }
 .studio-hero-content {
+  --studio-mark-width: min(72vh, 680px, 85vw);
   /* Let the sky canvas receive pointer movement through the logo and copy. */
   pointer-events: none;
   height: 100%;
@@ -51,7 +52,7 @@
 .studio-hero-mark {
   position: relative;
   margin: 0;
-  width: min(72vh, 680px, 85vw);
+  width: var(--studio-mark-width);
 }
 .studio-hero-mark img { display: block; width: 100%; height: auto; }
 .studio-hero:not(.logo-complete) .studio-hero-mark img { visibility: hidden; }
@@ -77,6 +78,13 @@
   text-align: center;
 }
 .studio-tagline { margin-top: 18px; }
+@media (min-width: 1024px) {
+  .studio-hero .studio-tagline {
+    width: var(--studio-mark-width);
+    max-width: none;
+    text-wrap: balance;
+  }
+}
 .studio-scroll {
   position: absolute;
   bottom: 0;
@@ -141,14 +149,8 @@ body:has(.studio-homepage) .footer-wrap footer { color: var(--color-ink); }
   pointer-events: none;
   background: linear-gradient(90deg, #29283fbd 0%, #35314d8c 35%, #45406020 70%, transparent);
 }
-.home-game-cloud-divider {
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 100%;
-  height: 140px;
-  fill: var(--home-sky);
-  pointer-events: none;
+@media (width > 760px) {
+  .home-game .cloud-divider { height: 140px; }
 }
 .home-game-art { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
 .home-game-art img { object-fit: cover; object-position: center; }
@@ -207,7 +209,6 @@ html body .home-follow-heading p:first-of-type { font-size: var(--ds-lead); font
   .home-game { padding-top: 160px; min-height: 680px; }
   .home-game::after { background: linear-gradient(90deg, #29283fc9, #35314d80); }
   .home-game-art img { object-position: 65% center; }
-  .home-game-cloud-divider { height: 160px; }
   .studio-tagline, .studio-scroll { font-size: 11px; letter-spacing: 3px; }
   .studio-hero-content { padding-bottom: 120px; }
 }
