@@ -113,7 +113,6 @@ function GameSection() {
                   unoptimized
                 />
               </div>
-              <span className="feature-number">0{index + 1}</span>
               <h3>{feature.title}</h3>
               <p>
                 {feature.subtitle}

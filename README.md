@@ -83,7 +83,7 @@ npm run build
 npm start
 ```
 
-## 8. Known limitations
+## 8. Known Limitations
 
 - The contact form opens an email draft; it does not send mail from the website or confirm delivery. Visitors need an email app or handler configured, and long drafts may exceed client-specific URL limits.
 - Team biographies are still marked as draft copy in `data/team.ts`.
@@ -92,11 +92,11 @@ npm start
 - Cloud effects depend on WebGL support and device performance. Motion preferences are respected, but rendering capabilities vary by browser and hardware.
 - Responsive layout checks do not replace a complete accessibility audit. Screen-reader behavior, 200% text enlargement, and broader device coverage still need dedicated verification.
 
-## 9. What you would improve next
+## 9. Next Improvements
 
 1. Add server-side email delivery with validation, abuse protection, and clear delivery feedback so contacting the studio does not depend on an installed email app.
 2. Replace draft team biographies with approved copy and review all public-facing content with the studio.
-3. Complete keyboard, screen-reader, text-resize, reduced-motion, and cross-device accessibility testing.
-4. Profile image loading and cloud rendering on lower-powered phones, then improve performance where measurements identify bottlenecks.
-5. Add automated checks for navigation, team selection, contact validation, and key responsive layouts.
-6. Consider a lightweight content workflow for publishing game updates without editing application code.
+3. Create a development log page for documenting process throughout developing the game.
+4. Complete keyboard, screen-reader, text-resize, reduced-motion, and cross-device accessibility testing.
+5. Profile image loading and cloud rendering on lower-powered phones, then improve performance where measurements identify bottlenecks.
+6. Add automated checks for navigation, team selection, contact validation, and key responsive layouts.
