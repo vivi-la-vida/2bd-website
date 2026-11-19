@@ -5,6 +5,7 @@ type CssLength = number | string;
 type StampRootStyle = CSSProperties & Partial<Record<"--stamp-ink" | "--stamp-padding" | "--stamp-paper", string>>;
 export type StampProps = {
   children: ReactNode;
+  as?: "span";
   "aria-hidden"?: boolean;
   "aria-label"?: string;
   className?: string;
@@ -47,7 +48,9 @@ function createStampClipPath(depth: number, horizontalCount: number, verticalCou
   return `polygon(${points.map(([x, y]) => `${x.toFixed(3)}% ${y.toFixed(3)}%`).join(", ")})`;
 }
 
-export function Stamp({ children, "aria-hidden": ariaHidden, "aria-label": ariaLabel, className = "", contentClassName = "", horizontalPerforations = 12, ink = "#181713", padding = 13, paper = "#ffffff", perforationDepth = 2.4, stampClassName = "", style, verticalPerforations = 15 }: StampProps) {
+export function Stamp({ children, as, "aria-hidden": ariaHidden, "aria-label": ariaLabel, className = "", contentClassName = "", horizontalPerforations = 12, ink = "#181713", padding = 13, paper = "#ffffff", perforationDepth = 2.4, stampClassName = "", style, verticalPerforations = 15 }: StampProps) {
+  const Container = as ?? "div";
+  const Paper = as ?? "article";
   const rootStyle: StampRootStyle = {
     "--stamp-ink": ink,
     "--stamp-padding": typeof padding === "number" ? `${padding}px` : padding,
@@ -56,10 +59,10 @@ export function Stamp({ children, "aria-hidden": ariaHidden, "aria-label": ariaL
     ...style,
   };
   return (
-    <div className={`paper-stamp-root ${className}`} style={rootStyle}>
-      <article aria-hidden={ariaHidden} aria-label={ariaHidden ? undefined : ariaLabel} className={`paper-stamp-paper ${stampClassName}`} style={{ background: "linear-gradient(145deg, rgb(255 255 255 / 34%), transparent 42%), var(--stamp-paper)", clipPath: createStampClipPath(perforationDepth, horizontalPerforations, verticalPerforations) }}>
-        <div className={`paper-stamp-content ${contentClassName}`}>{children}</div>
-      </article>
-    </div>
+    <Container className={`paper-stamp-root ${className}`} style={rootStyle}>
+      <Paper aria-hidden={ariaHidden} aria-label={ariaHidden ? undefined : ariaLabel} className={`paper-stamp-paper ${stampClassName}`} style={{ background: "linear-gradient(145deg, rgb(255 255 255 / 34%), transparent 42%), var(--stamp-paper)", clipPath: createStampClipPath(perforationDepth, horizontalPerforations, verticalPerforations) }}>
+        <Container className={`paper-stamp-content ${contentClassName}`}>{children}</Container>
+      </Paper>
+    </Container>
   );
 }
