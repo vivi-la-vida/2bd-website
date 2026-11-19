@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Stamp } from "@/components/ui/Stamp";
 import type { TeamMember } from "@/types/team";
 
 export default function TeamThumbnail({
@@ -19,16 +20,24 @@ export default function TeamThumbnail({
       aria-label={`Meet ${member.name}, ${member.role}`}
       title={`${member.name} · ${member.role}`}
     >
-      <Image
-        src={member.photo}
-        style={{ objectPosition: member.photoPosition }}
-        alt=""
-        width={180}
-        height={212}
-        sizes="(max-width: 640px) 80px, (max-width: 1000px) 65px, 55px"
-        draggable={false}
-      />
-      <span>{member.name.split(" ")[0]}</span>
+      <Stamp
+        as="span"
+        aria-hidden
+        className="gallery-profile-stamp"
+        paper={selected ? "#eee7fb" : "#fffaf1"}
+        padding={5}
+        horizontalPerforations={8}
+        verticalPerforations={10}
+      >
+        <Image
+          src={member.photo}
+          style={{ objectPosition: member.photoPosition }}
+          alt=""
+          fill
+          sizes="(max-width: 640px) 80px, (max-width: 1000px) 65px, 100px"
+          draggable={false}
+        />
+      </Stamp>
     </button>
   );
 }

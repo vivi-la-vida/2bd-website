@@ -1,7 +1,7 @@
 // Official studio destinations supplied by 2BD Studios.
 export const site = {
   email: "twobdstudios@gmail.com",
-  steam: "https://store.steampowered.com/app/4883480/To_Be_Seen/",
+  steam: "https://store.steampowered.com/curator/46742724/",
   linksAreSamples: false,
   socials: [
     { label: "Instagram", href: "https://www.instagram.com/2bdstudios/" },
