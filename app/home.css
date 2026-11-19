@@ -39,6 +39,7 @@
   }
 }
 .studio-hero-content {
+  --studio-mark-width: min(72vh, 680px, 85vw);
   /* Let the sky canvas receive pointer movement through the logo and copy. */
   pointer-events: none;
   height: 100%;
@@ -51,7 +52,7 @@
 .studio-hero-mark {
   position: relative;
   margin: 0;
-  width: min(72vh, 680px, 85vw);
+  width: var(--studio-mark-width);
 }
 .studio-hero-mark img { display: block; width: 100%; height: auto; }
 .studio-hero:not(.logo-complete) .studio-hero-mark img { visibility: hidden; }
@@ -77,6 +78,13 @@
   text-align: center;
 }
 .studio-tagline { margin-top: 18px; }
+@media (min-width: 1024px) {
+  .studio-hero .studio-tagline {
+    width: var(--studio-mark-width);
+    max-width: none;
+    text-wrap: balance;
+  }
+}
 .studio-scroll {
   position: absolute;
   bottom: 0;
