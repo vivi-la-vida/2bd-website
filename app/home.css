@@ -82,7 +82,7 @@
   .studio-hero .studio-tagline {
     width: var(--studio-mark-width);
     max-width: none;
-    text-wrap: balance;
+    font-size: clamp(var(--ds-lead), calc(var(--studio-mark-width) / 20), 2.125rem);
   }
 }
 .studio-scroll {
